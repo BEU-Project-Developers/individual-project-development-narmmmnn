@@ -56,26 +56,26 @@ namespace HostelManagementSystem
 
         private void button9_Click(object sender, EventArgs e)
         {
-            if (StudUSN.Text == "" || StudName.Text == "" || FatherName.Text == ""  || MotherName.Text == "" || AddressTb.Text == "" || CollegeTb.Text == "")
-            {
-                MessageBox.Show("No Empty Filled Accepted");
-            }
-            else
-            {
-                if (YesRadio.Checked == true)
-                    RoomBooked = "busy";
-                else
-                    RoomBooked = "Free";
-                Con.Open();
-                string query = "insert into Room_tbl values(" + textBox1.Text + ",'" + RoomStatusCb.SelectedItem.ToString() + "','" + RoomBooked + "')";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                cmd.ExecuteNonQuery();
+            //if (StudUSN.Text == "" || StudName.Text == "" || FatherName.Text == ""  || MotherName.Text == "" || AddressTb.Text == "" || CollegeTb.Text == "")
+            //{
+            //    MessageBox.Show("No Empty Filled Accepted");
+            //}
+            //else
+            //{
+            //    if (YesRadio.Checked == true)
+            //        RoomBooked = "busy";
+            //    else
+            //        RoomBooked = "Free";
+            //    Con.Open();
+            //    string query = "insert into Room_tbl values(" + textBox1.Text + ",'" + RoomStatusCb.SelectedItem.ToString() + "','" + RoomBooked + "')";
+            //    SqlCommand cmd = new SqlCommand(query, Con);
+            //    cmd.ExecuteNonQuery();
 
-                MessageBox.Show("Room Successfully Added");
+            //    MessageBox.Show("Room Successfully Added");
 
-                Con.Close();
-                FillRoomDGV();
-            }
+            //    Con.Close();
+            //    FillRoomDGV();
+            //}
         }
 
         private void button11_Click(object sender, EventArgs e)

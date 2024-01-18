@@ -35,6 +35,9 @@ namespace HostelManagementSystem
         string RoomBooked;
         private void button7_Click(object sender, EventArgs e)
         {
+            try
+            {
+
             
             if (textBox1.Text == "")
             {
@@ -56,31 +59,56 @@ namespace HostelManagementSystem
                 Con.Close();
                 FillRoomDGV();
             }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+
 
         }
         private void button6_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            try
             {
-                MessageBox.Show("Enter The Room Number");
-            }
-            else
-            {
-                if (YesRadio.Checked == true)
-                    RoomBooked = "busy";
+                if (textBox1.Text == "")
+                {
+                    MessageBox.Show("Enter The Room Number");
+                }
                 else
-                    RoomBooked = "Free";
-                Con.Open();
-                string query = "update Room_tbl set RoomStatus='"+RoomStatusCb.SelectedItem.ToString()+ "',Booked'" + RoomBooked + "' where RoomNum = " + textBox1.Text + "";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                cmd.ExecuteNonQuery();
+                {
+                    string RoomBooked = "";
 
-                MessageBox.Show("Room Successfully Updated");
+                    if (YesRadio.Checked == true)
+                        RoomBooked = "busy";
+                    else
+                        RoomBooked = "Free";
 
-                Con.Close();
-                FillRoomDGV();
+                    Con.Open();
+                    string query = "update Room_tbl set RoomStatus='" + RoomStatusCb.SelectedItem.ToString() + "', Booked='" + RoomBooked + "' where RoomNum = " + textBox1.Text + "";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Room Successfully Updated");
+
+                    Con.Close();
+                    FillRoomDGV();
+                }
+            }
+            catch (System.Data.SqlClient.SqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
