@@ -21,48 +21,36 @@ namespace HostelManagementSystem
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
         void FillStudentDGV()
         {
-            try
-            {
-                Con.Open();
-                string myquery = "SELECT * FROM Student_tbl";
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-                var ds = new DataSet();
-                da.Fill(ds);
-                StudentDGV.DataSource = ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                Con.Close();
-            }
-        }
+
+
+            Con.Open();
+            string myquery = "SELECT * FROM Student_tbl";
+            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
+            var ds = new DataSet();
+            da.Fill(ds);
+            StudentDGV.DataSource = ds.Tables[0];
+            Con.Close();
+
+        }  
+            
+    
         void FillRoomCombobox()
         {
-            try
-            {
+            
                 Con.Open();
                 string query = "Select * from Room_tbl where RoomStatus = '"+"Active"+"' and Booked = '"+"Free"+"' ";
                 SqlCommand cmd = new SqlCommand(query, Con);
-                SqlDataReader rdr = cmd.ExecuteReader();
-
+            SqlDataReader rdr;
+                rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Columns.Add("RoomNum", typeof(int));
                 dt.Load(rdr);
 
                 StudRoomCb.ValueMember = "RoomNum";
                 StudRoomCb.DataSource = dt;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
                 Con.Close();
-            }
+            
+            
         }
 
 
@@ -80,34 +68,29 @@ namespace HostelManagementSystem
 
         private void button10_Click(object sender, EventArgs e)
         {
-            try
-            {
+
+
                 if (StudUSN.Text == "")
                 {
                     MessageBox.Show("Enter The Student Number");
                 }
                 else
                 {
+                    
                     Con.Open();
-                    string query = "update Student_tbl set StdName='" + StudName.Text + "',FatherName='" + FatherName.Text + "' ,MotherName='" + MotherName.Text + "' ,StdAddress='" + AddressTb.Text + "' ,College='" + CollegeTb.Text + "' ,StdRoom=" + StudRoomCb.SelectedValue.ToString() + " ,StdStatus='" + StudStatusCb.SelectedValue.ToString() + "'where StdUsn = '" + StudUSN.Text + "' ";
+                    string query = "update Student_tbl set StdName='" + StudName.Text + "',FatherName='" + FatherName.Text + "' ,MotherName='" + MotherName.Text + "' ,StdAddress='" + AddressTb.Text + "' ,College='" + CollegeTb.Text + "' ,StdRoom= " + StudRoomCb.SelectedItem.ToString() + " ,StdStatus='" + StudStatusCb.SelectedValue.ToString() + "'where StdUsn = '" + StudUSN.Text + "' ";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Student Successfully Updated");
-
                     Con.Close();
+                    updateBookedStatus();
                     FillStudentDGV();
                     FillRoomCombobox();
+                    
                 }
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            
+
         }
     
 
@@ -128,49 +111,53 @@ namespace HostelManagementSystem
 
         private void button9_Click(object sender, EventArgs e)
         {
-            try
+            if (StudUSN.Text == "" || StudName.Text == "" || FatherName.Text == "" || MotherName.Text == "" || AddressTb.Text == "" || CollegeTb.Text == "")
             {
-                if (StudUSN.Text == "" || StudName.Text == "" || FatherName.Text == "" || MotherName.Text == "" || AddressTb.Text == "" || CollegeTb.Text == "")
-                {
-                    MessageBox.Show("No Empty Filled Accepted");
-                }
-                else
+                MessageBox.Show("No Empty Filled Accepted");
+            }
+            else
+            {
+                try
                 {
                     Con.Open();
-
-                    // Check if StudRoomCb.SelectedValue is not null before using it
-                    string roomValue = StudRoomCb.SelectedValue != null ? StudRoomCb.SelectedValue.ToString() : "";
-
-                    string query = "insert into Student_tbl values('" + StudUSN.Text + "','" + StudName.Text + "','" + FatherName.Text + "','" + MotherName.Text + "','" + AddressTb.Text + "','" + CollegeTb.Text + "','" + roomValue + "','" + StudStatusCb.SelectedItem?.ToString() + "')";
+                    string query = "INSERT INTO Student_tbl VALUES (@StdUSN, @StdName, @FatherName, @MotherName, @StdAddress, @College, @StdRoom, @StdStatus)";
                     SqlCommand cmd = new SqlCommand(query, Con);
+
+                    // Use parameters to avoid SQL injection
+                    cmd.Parameters.AddWithValue("@StdUSN", StudUSN.Text);
+                    cmd.Parameters.AddWithValue("@StdName", StudName.Text);
+                    cmd.Parameters.AddWithValue("@FatherName", FatherName.Text);
+                    cmd.Parameters.AddWithValue("@MotherName", MotherName.Text);
+                    cmd.Parameters.AddWithValue("@StdAddress", AddressTb.Text);
+                    cmd.Parameters.AddWithValue("@College", CollegeTb.Text);
+                    cmd.Parameters.AddWithValue("@StdRoom", StudRoomCb.SelectedValue.ToString());
+                    cmd.Parameters.AddWithValue("@StdStatus", StudStatusCb.SelectedItem.ToString());
+
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Student Successfully Added");
 
                     Con.Close();
+                    updateBookedStatus();
                     FillStudentDGV();
                     FillRoomCombobox();
                 }
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                MessageBox.Show("SQL Error: " + ex.Message);
-            }
-            catch (System.NullReferenceException ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+                catch (System.Data.SqlClient.SqlException ex)
+                {
+                    MessageBox.Show("SQL Error: " + ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
 
 
+
         private void button11_Click(object sender, EventArgs e)
         {
-            try
-            {
+           
                 if (StudUSN.Text == "")
                 {
                     MessageBox.Show("Enter The Student Number");
@@ -178,7 +165,7 @@ namespace HostelManagementSystem
                 else
                 {
                     Con.Open();
-                    string query = "DELETE FROM Student_tbl WHERE StdUsn = '" + StudUSN.Text + "'";
+                    string query = "delete from Student_tbl where StdUsn = '" + StudUSN.Text + "' ";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
 
@@ -189,11 +176,7 @@ namespace HostelManagementSystem
                     FillStudentDGV();
                     FillRoomCombobox();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            
         }
 
 
@@ -290,19 +273,20 @@ namespace HostelManagementSystem
                 Application.Exit();
             }
         }
-         void updateBookedStatusOnDelete()
+        void updateBookedStatusOnDelete()
         {
             Con.Open();
-            String query = "update Room_tbl set Booked='" + "Free" + "' where RoomNum=" + StudRoomCb.SelectedValue.ToString() + "";
+            String query = "update Room_tbl set Booked='" + "Free" + "' where RoomNum=" + StudRoomCb.SelectedItem.ToString() + "";
             SqlCommand cmd = new SqlCommand(query, Con);
             cmd.ExecuteNonQuery();
             // MessageBox.Show("Room successfully Updated!");
             Con.Close();
         }
+
         void updateBookedStatus()
         {
             Con.Open();
-            String query = "update Room_tbl set Booked='" + "busy" + "' where RoomNum=" + StudRoomCb.SelectedValue.ToString() + "";
+            String query = "update Room_tbl set Booked='" + "busy" + "' where RoomNum=" + StudRoomCb.SelectedItem.ToString() + "";
             SqlCommand cmd = new SqlCommand(query, Con);
             cmd.ExecuteNonQuery();
             // MessageBox.Show("Room successfully Updated!");
@@ -326,7 +310,6 @@ namespace HostelManagementSystem
             MotherName.Text = StudentDGV.SelectedRows[0].Cells[3].Value.ToString();
             AddressTb.Text = StudentDGV.SelectedRows[0].Cells[4].Value.ToString();
             CollegeTb.Text = StudentDGV.SelectedRows[0].Cells[5].Value.ToString();
-            
         }
     }
 }
