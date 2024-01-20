@@ -55,18 +55,18 @@ namespace HostelManagementSystem
         {
             try
             {
-                if (textBox1.Text == "")
+                if (RoomNumbTb.Text == "")
                 {
                     MessageBox.Show("Enter The Room Number");
                 }
                 else
                 {
                     // Determine if the room is booked or free
-                    string roomBooked = YesRadio.Checked ? "busy" : "Free";
+                    string roomBooked = YesRadio.Checked ? "Busy" : "Free";
 
                     Con.Open();
                     // SQL query to insert a new room into Room_tbl
-                    string query = "insert into Room_tbl values(" + textBox1.Text + ",'" + RoomStatusCb.SelectedItem.ToString() + "','" + roomBooked + "')";
+                    string query = "insert into Room_tbl values(" + RoomNumbTb.Text + ",'" + RoomStatusCb.SelectedItem.ToString() + "','" + roomBooked + "')";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
 
@@ -87,18 +87,18 @@ namespace HostelManagementSystem
         {
             try
             {
-                if (textBox1.Text == "")
+                if (RoomNumbTb.Text == "")
                 {
                     MessageBox.Show("Enter The Room Number");
                 }
                 else
                 {
                     // Determine if the room is booked or free
-                    string roomBooked = YesRadio.Checked ? "busy" : "Free";
+                    string roomBooked = YesRadio.Checked ? "Busy" : "Free";
 
                     Con.Open();
                     // SQL query to update an existing room in Room_tbl
-                    string query = "update Room_tbl set RoomStatus='" + RoomStatusCb.SelectedItem.ToString() + "', Booked='" + roomBooked + "' where RoomNum = " + textBox1.Text + "";
+                    string query = "update Room_tbl set RoomStatus='" + RoomStatusCb.SelectedItem.ToString() + "', Booked='" + roomBooked + "' where RoomNum = " + RoomNumbTb.Text + "";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
 
@@ -131,14 +131,14 @@ namespace HostelManagementSystem
         {
             try
             {
-                if (textBox1.Text == "")
+                if (RoomNumbTb.Text == "")
                 {
                     MessageBox.Show("Enter The Room Number");
                 }
                 else
                 {
                     // Determine if the room is booked or free based on the radio button
-                    string roomBooked = YesRadio.Checked ? "busy" : "Free";
+                    string roomBooked = YesRadio.Checked ? "Busy" : "Free";
 
                     Con.Open();
 
@@ -146,7 +146,7 @@ namespace HostelManagementSystem
                     string query = "DELETE FROM Room_tbl WHERE RoomNum = @RoomNum";
 
                     SqlCommand cmd = new SqlCommand(query, Con);
-                    cmd.Parameters.AddWithValue("@RoomNum", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@RoomNum", RoomNumbTb.Text);
 
                     cmd.ExecuteNonQuery();
 
@@ -174,11 +174,9 @@ namespace HostelManagementSystem
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
+        
                 Application.Exit();
-            }
+            
         }
         
 
@@ -192,7 +190,7 @@ namespace HostelManagementSystem
             // Check if the clicked row is valid
             if (e.RowIndex >= 0 && e.RowIndex < RoomDGV.Rows.Count)
             {
-                textBox1.Text = RoomDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();
+                RoomNumbTb.Text = RoomDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();
               
                 // Assuming UsnCb is a ComboBox
                 string selectedstatus = RoomDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();

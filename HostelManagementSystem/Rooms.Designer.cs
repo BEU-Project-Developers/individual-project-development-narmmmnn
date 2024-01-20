@@ -45,7 +45,7 @@ namespace HostelManagementSystem
             this.button7 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.RoomNumbTb = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -104,7 +104,6 @@ namespace HostelManagementSystem
             this.RoomStatusCb.Name = "RoomStatusCb";
             this.RoomStatusCb.Size = new System.Drawing.Size(133, 27);
             this.RoomStatusCb.TabIndex = 11;
-          
             // 
             // YesRadio
             // 
@@ -246,12 +245,12 @@ namespace HostelManagementSystem
             this.label4.TabIndex = 11;
             this.label4.Text = "www.StepInnMyeongdong.com";
             // 
-            // textBox1
+            // RoomNumbTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(255, 200);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(133, 25);
-            this.textBox1.TabIndex = 23;
+            this.RoomNumbTb.Location = new System.Drawing.Point(255, 200);
+            this.RoomNumbTb.Name = "RoomNumbTb";
+            this.RoomNumbTb.Size = new System.Drawing.Size(133, 25);
+            this.RoomNumbTb.TabIndex = 23;
             // 
             // panel1
             // 
@@ -304,7 +303,6 @@ namespace HostelManagementSystem
             this.RoomDGV.Size = new System.Drawing.Size(373, 449);
             this.RoomDGV.TabIndex = 24;
             this.RoomDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RoomDGV_CellContentClick);
-            this.RoomDGV.ForeColor = System.Drawing.Color.Black;
             // 
             // Rooms
             // 
@@ -313,7 +311,7 @@ namespace HostelManagementSystem
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1023, 769);
             this.Controls.Add(this.RoomDGV);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.RoomNumbTb);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -363,7 +361,7 @@ namespace HostelManagementSystem
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox RoomNumbTb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView RoomDGV;
     }

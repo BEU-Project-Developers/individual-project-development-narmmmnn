@@ -391,15 +391,14 @@ namespace HostelManagementSystem
             // 
             this.StudentDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.StudentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentDGV.GridColor = System.Drawing.SystemColors.Control;
-            this.StudentDGV.Location = new System.Drawing.Point(433, 191);
+            this.StudentDGV.Location = new System.Drawing.Point(434, 200);
             this.StudentDGV.Name = "StudentDGV";
             this.StudentDGV.RowHeadersWidth = 51;
             this.StudentDGV.RowTemplate.Height = 24;
-            this.StudentDGV.Size = new System.Drawing.Size(894, 629);
+            this.StudentDGV.Size = new System.Drawing.Size(893, 582);
             this.StudentDGV.TabIndex = 43;
-            this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudenDGV_CellContentClick);
             this.StudentDGV.ForeColor = System.Drawing.Color.Black;
+            this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentDGV_CellContentClick);
             // 
             // Students
             // 
@@ -477,6 +476,6 @@ namespace HostelManagementSystem
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox StudUSN;
-        private System.Windows.Forms.DataGridView StudentDGV;
+        private DataGridView StudentDGV;
     }
 }
