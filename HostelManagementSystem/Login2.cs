@@ -20,51 +20,58 @@ namespace HostelManagementSystem
             
         }
         SqlConnection Con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\LENOVO\\Documents\\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
-        private void check_pass_CheckedChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (u_name.Text != "" && password.Text != "")
+            try
             {
-                string query = "select count(*) from Registration_tbl where email = '" + u_name.Text + "' and " + "password='" + password.Text + "'";
-                Con.Open();
-                SqlCommand cmd = new SqlCommand(query, Con);
-                int v = (int)cmd.ExecuteScalar();
-                if (v != 1)
+                if (u_name.Text != "" && password.Text != "")
                 {
-                    MessageBox.Show("Error username or password", "Error!");
+                    Con.Open();
+                    // SQL query to check the count of rows where the given email and password match
+                    string query = "select count(*) from Registration_tbl where email = '" + u_name.Text + "' and password='" + password.Text + "'";
+                    // Create a SqlCommand object to execute the SQL query and retrieve a single value
+                    SqlCommand cmd = new SqlCommand(query, Con);
+
+                    // Execute the query and cast the result to an integer
+                    int v = (int)cmd.ExecuteScalar();
+
+
+                    if (v != 1)
+                    {
+                        MessageBox.Show("Error username or password", "Error!");
+                    }
+                    else
+                    {
+                        Form1 form = new Form1();
+                        form.Show();
+                        this.Hide();
+                    }
                 }
                 else
                 {
-                    Form1 form = new Form1();
-                    form.Show();
-                    this.Hide();
+                    MessageBox.Show("Fill in the blanks!");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Fill in the blinks!");
+                MessageBox.Show("Error: " + ex.Message);
             }
-            
-
-            //Form1 form = new Form1();  
-            //form.Show();
-            //this.Hide();
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close(); 
+                }
+            }
         }
+
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Login signup = new Login();
             signup.Show();
             this.Hide();
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
 
         }
         protected override void OnFormClosing(FormClosingEventArgs e)

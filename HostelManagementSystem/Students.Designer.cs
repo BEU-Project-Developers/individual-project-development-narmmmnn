@@ -1,4 +1,6 @@
-﻿namespace HostelManagementSystem
+﻿using System.Windows.Forms;
+
+namespace HostelManagementSystem
 {
     partial class Students
     {
@@ -28,9 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -58,7 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.StudUSN = new System.Windows.Forms.TextBox();
-            this.StudentDGV = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.StudentDGV = new System.Windows.Forms.DataGridView();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.StudentDGV)).BeginInit();
@@ -71,7 +70,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1237, 10);
+            this.panel2.Size = new System.Drawing.Size(1339, 10);
             this.panel2.TabIndex = 6;
             // 
             // button2
@@ -80,7 +79,7 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(78, 247);
+            this.button2.Location = new System.Drawing.Point(36, 246);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 36);
@@ -94,7 +93,7 @@
             this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button4.Location = new System.Drawing.Point(78, 408);
+            this.button4.Location = new System.Drawing.Point(36, 407);
             this.button4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(158, 36);
@@ -108,7 +107,7 @@
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button5.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button5.Location = new System.Drawing.Point(78, 356);
+            this.button5.Location = new System.Drawing.Point(36, 355);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(158, 36);
@@ -122,7 +121,7 @@
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button6.Location = new System.Drawing.Point(78, 300);
+            this.button6.Location = new System.Drawing.Point(36, 299);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(158, 36);
@@ -136,12 +135,11 @@
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(757, 144);
+            this.label2.Location = new System.Drawing.Point(764, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 34);
             this.label2.TabIndex = 24;
             this.label2.Text = "Student List";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // button7
             // 
@@ -149,14 +147,13 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(78, 576);
+            this.button7.Location = new System.Drawing.Point(36, 575);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(158, 36);
+            this.button7.Size = new System.Drawing.Size(158, 37);
             this.button7.TabIndex = 26;
-            this.button7.Text = "Student Status";
+            this.button7.Text = "Std Status";
             this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -164,14 +161,13 @@
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button8.Location = new System.Drawing.Point(78, 521);
+            this.button8.Location = new System.Drawing.Point(36, 520);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(158, 36);
             this.button8.TabIndex = 27;
             this.button8.Text = "Room Num";
             this.button8.UseVisualStyleBackColor = false;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // StudRoomCb
             // 
@@ -180,43 +176,39 @@
             this.StudRoomCb.Items.AddRange(new object[] {
             "Active",
             "NotActive"});
-            this.StudRoomCb.Location = new System.Drawing.Point(260, 530);
+            this.StudRoomCb.Location = new System.Drawing.Point(218, 529);
             this.StudRoomCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StudRoomCb.Name = "StudRoomCb";
             this.StudRoomCb.Size = new System.Drawing.Size(151, 24);
             this.StudRoomCb.TabIndex = 28;
-            this.StudRoomCb.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // AddressTb
             // 
-            this.AddressTb.Location = new System.Drawing.Point(260, 422);
+            this.AddressTb.Location = new System.Drawing.Point(218, 421);
             this.AddressTb.Name = "AddressTb";
             this.AddressTb.Size = new System.Drawing.Size(151, 22);
             this.AddressTb.TabIndex = 29;
-            this.AddressTb.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // MotherName
             // 
-            this.MotherName.Location = new System.Drawing.Point(260, 370);
+            this.MotherName.Location = new System.Drawing.Point(218, 369);
             this.MotherName.Name = "MotherName";
             this.MotherName.Size = new System.Drawing.Size(151, 22);
             this.MotherName.TabIndex = 30;
-            this.MotherName.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // FatherName
             // 
-            this.FatherName.Location = new System.Drawing.Point(260, 309);
+            this.FatherName.Location = new System.Drawing.Point(218, 308);
             this.FatherName.Name = "FatherName";
             this.FatherName.Size = new System.Drawing.Size(151, 22);
             this.FatherName.TabIndex = 31;
             // 
             // StudName
             // 
-            this.StudName.Location = new System.Drawing.Point(260, 256);
+            this.StudName.Location = new System.Drawing.Point(218, 255);
             this.StudName.Name = "StudName";
             this.StudName.Size = new System.Drawing.Size(151, 22);
             this.StudName.TabIndex = 32;
-            
             // 
             // button1
             // 
@@ -224,14 +216,13 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(78, 465);
+            this.button1.Location = new System.Drawing.Point(36, 464);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(158, 36);
             this.button1.TabIndex = 33;
             this.button1.Text = "College";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // StudStatusCb
             // 
@@ -240,20 +231,18 @@
             this.StudStatusCb.Items.AddRange(new object[] {
             "Living",
             "Left"});
-            this.StudStatusCb.Location = new System.Drawing.Point(260, 585);
+            this.StudStatusCb.Location = new System.Drawing.Point(218, 584);
             this.StudStatusCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.StudStatusCb.Name = "StudStatusCb";
             this.StudStatusCb.Size = new System.Drawing.Size(151, 24);
             this.StudStatusCb.TabIndex = 34;
-            this.StudStatusCb.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // CollegeTb
             // 
-            this.CollegeTb.Location = new System.Drawing.Point(260, 479);
+            this.CollegeTb.Location = new System.Drawing.Point(218, 478);
             this.CollegeTb.Name = "CollegeTb";
             this.CollegeTb.Size = new System.Drawing.Size(151, 22);
             this.CollegeTb.TabIndex = 35;
-            this.CollegeTb.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // panel4
             // 
@@ -262,9 +251,8 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 841);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1237, 23);
+            this.panel4.Size = new System.Drawing.Size(1339, 23);
             this.panel4.TabIndex = 37;
-            this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label4
             // 
@@ -277,7 +265,6 @@
             this.label4.Size = new System.Drawing.Size(310, 20);
             this.label4.TabIndex = 11;
             this.label4.Text = "www.StepInnMyeongdong.com";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button9
             // 
@@ -285,7 +272,7 @@
             this.button9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button9.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button9.ForeColor = System.Drawing.Color.Navy;
-            this.button9.Location = new System.Drawing.Point(64, 700);
+            this.button9.Location = new System.Drawing.Point(25, 667);
             this.button9.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(98, 36);
@@ -300,7 +287,7 @@
             this.button10.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button10.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button10.ForeColor = System.Drawing.Color.Navy;
-            this.button10.Location = new System.Drawing.Point(190, 700);
+            this.button10.Location = new System.Drawing.Point(151, 667);
             this.button10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(120, 36);
@@ -315,7 +302,7 @@
             this.button11.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button11.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button11.ForeColor = System.Drawing.Color.Navy;
-            this.button11.Location = new System.Drawing.Point(338, 700);
+            this.button11.Location = new System.Drawing.Point(299, 667);
             this.button11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(115, 36);
@@ -330,7 +317,7 @@
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button12.ForeColor = System.Drawing.Color.Navy;
-            this.button12.Location = new System.Drawing.Point(201, 769);
+            this.button12.Location = new System.Drawing.Point(162, 736);
             this.button12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(98, 36);
@@ -348,9 +335,8 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1237, 119);
+            this.panel1.Size = new System.Drawing.Size(1339, 119);
             this.panel1.TabIndex = 5;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label3
             // 
@@ -360,7 +346,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1187, 9);
+            this.label3.Location = new System.Drawing.Point(1289, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -374,12 +360,11 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(396, 33);
+            this.label1.Location = new System.Drawing.Point(458, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(408, 36);
             this.label1.TabIndex = 0;
             this.label1.Text = "STUDENT INFORMATION";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button3
             // 
@@ -387,81 +372,41 @@
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button3.Location = new System.Drawing.Point(78, 192);
+            this.button3.Location = new System.Drawing.Point(36, 191);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 36);
             this.button3.TabIndex = 18;
             this.button3.Text = "Student USN";
             this.button3.UseVisualStyleBackColor = false;
-            
             // 
             // StudUSN
             // 
-            this.StudUSN.Location = new System.Drawing.Point(260, 201);
+            this.StudUSN.Location = new System.Drawing.Point(218, 200);
             this.StudUSN.Name = "StudUSN";
             this.StudUSN.Size = new System.Drawing.Size(151, 22);
             this.StudUSN.TabIndex = 42;
             // 
             // StudentDGV
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.StudentDGV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.StudentDGV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.StudentDGV.ColumnHeadersHeight = 4;
-            this.StudentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.StudentDGV.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StudentDGV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.StudentDGV.Location = new System.Drawing.Point(474, 201);
+            this.StudentDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.StudentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StudentDGV.GridColor = System.Drawing.SystemColors.Control;
+            this.StudentDGV.Location = new System.Drawing.Point(433, 191);
             this.StudentDGV.Name = "StudentDGV";
-            this.StudentDGV.RowHeadersVisible = false;
             this.StudentDGV.RowHeadersWidth = 51;
             this.StudentDGV.RowTemplate.Height = 24;
-            this.StudentDGV.Size = new System.Drawing.Size(751, 591);
+            this.StudentDGV.Size = new System.Drawing.Size(894, 629);
             this.StudentDGV.TabIndex = 43;
-            this.StudentDGV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.StudentDGV.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.StudentDGV.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.StudentDGV.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.StudentDGV.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.StudentDGV.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.StudentDGV.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.StudentDGV.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.StudentDGV.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.StudentDGV.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentDGV.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.StudentDGV.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.StudentDGV.ThemeStyle.HeaderStyle.Height = 4;
-            this.StudentDGV.ThemeStyle.ReadOnly = false;
-            this.StudentDGV.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.StudentDGV.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.StudentDGV.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StudentDGV.ThemeStyle.RowsStyle.ForeColor = System.Drawing.SystemColors.Control;
-            this.StudentDGV.ThemeStyle.RowsStyle.Height = 24;
-            this.StudentDGV.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.StudentDGV.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentDGV_CellContentClick);
+            this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudenDGV_CellContentClick);
+            this.StudentDGV.ForeColor = System.Drawing.Color.Black;
             // 
             // Students
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1237, 864);
+            this.ClientSize = new System.Drawing.Size(1339, 864);
             this.Controls.Add(this.StudentDGV);
             this.Controls.Add(this.StudUSN);
             this.Controls.Add(this.button9);
@@ -532,6 +477,6 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox StudUSN;
-        private Guna.UI2.WinForms.Guna2DataGridView StudentDGV;
+        private System.Windows.Forms.DataGridView StudentDGV;
     }
 }

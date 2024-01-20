@@ -176,16 +176,17 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(46, 469);
+            this.button7.Location = new System.Drawing.Point(46, 464);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(87, 29);
+            this.button7.Size = new System.Drawing.Size(87, 30);
             this.button7.TabIndex = 49;
             this.button7.Text = "Month";
             this.button7.UseVisualStyleBackColor = false;
             // 
             // PaymentDGV
             // 
+            this.PaymentDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.PaymentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.PaymentDGV.Location = new System.Drawing.Point(491, 181);
             this.PaymentDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -202,7 +203,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(854, 133);
+            this.label2.Location = new System.Drawing.Point(822, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 34);
             this.label2.TabIndex = 47;
@@ -233,7 +234,7 @@
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(158, 36);
             this.button3.TabIndex = 44;
-            this.button3.Text = "USN";
+            this.button3.Text = "Std USN";
             this.button3.UseVisualStyleBackColor = false;
             // 
             // panel2
@@ -279,7 +280,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(483, 35);
+            this.label1.Location = new System.Drawing.Point(533, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(256, 36);
             this.label1.TabIndex = 0;
@@ -308,7 +309,7 @@
             // 
             // Periode
             // 
-            this.Periode.Location = new System.Drawing.Point(141, 472);
+            this.Periode.Location = new System.Drawing.Point(141, 467);
             this.Periode.Name = "Periode";
             this.Periode.Size = new System.Drawing.Size(229, 22);
             this.Periode.TabIndex = 60;
@@ -319,7 +320,7 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(46, 542);
+            this.button1.Location = new System.Drawing.Point(46, 529);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(158, 36);
@@ -329,7 +330,7 @@
             // 
             // AmountTb
             // 
-            this.AmountTb.Location = new System.Drawing.Point(217, 551);
+            this.AmountTb.Location = new System.Drawing.Point(217, 538);
             this.AmountTb.Name = "AmountTb";
             this.AmountTb.Size = new System.Drawing.Size(151, 22);
             this.AmountTb.TabIndex = 62;

@@ -234,7 +234,6 @@
             this.label4.Size = new System.Drawing.Size(90, 20);
             this.label4.TabIndex = 4;
             this.label4.Text = "Birth Day";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 

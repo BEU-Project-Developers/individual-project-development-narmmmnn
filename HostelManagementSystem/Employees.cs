@@ -15,24 +15,37 @@ namespace HostelManagementSystem
     {
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
 
-
         public Employees()
         {
             InitializeComponent();
         }
+        
         void FillEmployeeDGV()
         {
+            try
+            {
+                Con.Open();
+                string myquery = "SELECT * FROM Employee_tbl";
 
+                // SqlDataAdapter to fetch data from the database
+                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
 
-            Con.Open();
-            string myquery = "SELECT * FROM Employee_tbl";
-            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-            var ds = new DataSet();
-            da.Fill(ds);
-            EmployeeDGV.DataSource = ds.Tables[0];
-            Con.Close();
+                // DataSet to store the retrieved data
+                var ds = new DataSet();
 
+                // Fill the DataSet with data from the Employee_tbl table
+                da.Fill(ds);
+
+                // Set the DataSource of the Employee DataGridView to the DataSet
+                EmployeeDGV.DataSource = ds.Tables[0];
+                Con.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
+
         private void label3_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -50,10 +63,6 @@ namespace HostelManagementSystem
             FillEmployeeDGV();
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -65,24 +74,33 @@ namespace HostelManagementSystem
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if (EmpIdTb.Text == "")
+            try
             {
-                MessageBox.Show("Enter The Employee Id");
-            }
-            else
+                if (EmpIdTb.Text == "")
+                {
+                    MessageBox.Show("Enter The Employee Id");
+                }
+                else
+                {
+                    Con.Open();
+
+                    // SQL query to delete employee information based on the provided Employee Id
+                    string query = "DELETE FROM Employee_tbl WHERE EmpID = '" + EmpIdTb.Text + "'";
+
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();                   
+                    MessageBox.Show("Employee Info Successfully Deleted");
+
+                    Con.Close();
+                    FillEmployeeDGV();
+                }
+            }            
+            catch (Exception ex)
             {
-                Con.Open();
-                string query = "DELETE FROM Employee_tbl WHERE EmpID = '" + EmpIdTb.Text + "'";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                cmd.ExecuteNonQuery();
-
-                MessageBox.Show("Employee Info Successfully Deleted");
-
-                Con.Close();
-                FillEmployeeDGV();
-                
+                MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -95,6 +113,7 @@ namespace HostelManagementSystem
                 try
                 {
                     Con.Open();
+                    // SQL query to insert a new employee into Employee_tbl using parameters to avoid SQL injection
                     String query = "INSERT INTO Employee_tbl VALUES (@EmpId, @EmpName, @EmpPhone, @EmpAddress, @EmpPosition, @EmpStatus)";
                     SqlCommand cmd = new SqlCommand(query, Con);
 
@@ -124,6 +143,7 @@ namespace HostelManagementSystem
 
         private void EmployeeDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // Check if the clicked row is valid
             if (e.RowIndex >= 0 && e.RowIndex < EmployeeDGV.Rows.Count)
             {
                 EmpIdTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();

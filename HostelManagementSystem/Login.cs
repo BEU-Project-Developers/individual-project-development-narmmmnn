@@ -23,17 +23,25 @@ namespace HostelManagementSystem
         {
             try
             {
-                if(first_name.Text!="" && l_name.Text!="" && date.Text!="" && gender.Text!="" && emailadd.Text!="" && address.Text!="" && password.Text!="" && con_password.Text != "" )
-                {
-                    if(password.Text== con_password.Text)
+                // Check if all the required fields are filled
+                if (first_name.Text != "" && l_name.Text != "" && date.Text != "" && gender.Text != "" && emailadd.Text != "" && address.Text != "" && password.Text != "" && con_password.Text != "")
+                {                    
+                    if (password.Text == con_password.Text)
                     {
+                        // Check if the email is not already registered
                         int v = check(emailadd.Text);
-                        if(v!= 1)
+
+                        if (v != 1)
                         {
+                            // If email is not registered, proceed with registration
                             Random random = new Random();
                             Con.Open();
-                            SqlCommand cmd = new SqlCommand("insert into Registration_tbl values(@Id, @f_name,@l_name," + "@b_date, @gender, @address, @email, @password)", Con);
                             int Id = random.Next();
+
+                            // Insert user registration data into the Registration_tbl
+                            SqlCommand cmd = new SqlCommand("INSERT INTO Registration_tbl VALUES(@Id, @f_name, @l_name, @b_date, @gender, @address, @email, @password)", Con);
+
+                            // Add parameters to the SqlCommand
                             cmd.Parameters.AddWithValue("@Id", Id);
                             cmd.Parameters.AddWithValue("@f_name", first_name.Text);
                             cmd.Parameters.AddWithValue("@email", emailadd.Text);
@@ -42,16 +50,18 @@ namespace HostelManagementSystem
                             cmd.Parameters.AddWithValue("@gender", gender.Text);
                             cmd.Parameters.AddWithValue("@address", address.Text);
                             cmd.Parameters.AddWithValue("@password", password.Text);
+
                             cmd.ExecuteNonQuery();
                             Con.Close();
-                            MessageBox.Show("Register Successfully");
+                            MessageBox.Show("Registration Successful");
+
+                            // Clear the input fields after successful registration
                             first_name.Text = "";
                             l_name.Text = "";
                             gender.Text = "";
                             emailadd.Text = "";
                             password.Text = "";
                             con_password.Text = "";
-
                         }
                         else
                         {
@@ -65,10 +75,11 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    MessageBox.Show("Fill the blinks!");
+                    MessageBox.Show("Fill in the blanks!");
                 }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -76,22 +87,19 @@ namespace HostelManagementSystem
         int check(string email)
         {
             Con.Open();
-            string query = " select count(*) from Registration_tbl where email='" + email + "'";
+            // Construct the SQL query to count the occurrences of a specific email in the Registration_tbl
+            string query = "SELECT COUNT(*) FROM Registration_tbl WHERE email='" + email + "'";
+
+            // Create a SqlCommand object to execute the SQL query and retrieve a single value
             SqlCommand cmd = new SqlCommand(query, Con);
-            int v=(int)cmd.ExecuteScalar();
+
+            // Execute the query and cast the result to an integer
+            int v = (int)cmd.ExecuteScalar();
+
             Con.Close();
             return v;
         }
-        
-        private void check_pass_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {

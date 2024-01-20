@@ -30,13 +30,12 @@
         {
             this.panel4 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.AmountTb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Periode = new System.Windows.Forms.DateTimePicker();
+            this.SalaryIdTb = new System.Windows.Forms.TextBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.SalaryDGV = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,14 +45,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.EmployeeNameTb = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
+            this.EmployeeIdCb = new System.Windows.Forms.ComboBox();
+            this.PositionTb = new System.Windows.Forms.TextBox();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalaryDGV)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 809);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1262, 23);
+            this.panel4.Size = new System.Drawing.Size(1337, 23);
             this.panel4.TabIndex = 71;
             // 
             // label4
@@ -77,14 +77,13 @@
             this.label4.Size = new System.Drawing.Size(310, 20);
             this.label4.TabIndex = 11;
             this.label4.Text = "www.StepInnMyeongdong.com";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox1
+            // AmountTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(220, 506);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 22);
-            this.textBox1.TabIndex = 75;
+            this.AmountTb.Location = new System.Drawing.Point(220, 506);
+            this.AmountTb.Name = "AmountTb";
+            this.AmountTb.Size = new System.Drawing.Size(151, 22);
+            this.AmountTb.TabIndex = 75;
             // 
             // button1
             // 
@@ -100,32 +99,19 @@
             this.button1.Text = "Amount";
             this.button1.UseVisualStyleBackColor = false;
             // 
-            // dateTimePicker1
+            // Periode
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(142, 441);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(229, 22);
-            this.dateTimePicker1.TabIndex = 73;
+            this.Periode.Location = new System.Drawing.Point(142, 441);
+            this.Periode.Name = "Periode";
+            this.Periode.Size = new System.Drawing.Size(229, 22);
+            this.Periode.TabIndex = 73;
             // 
-            // textBox5
+            // SalaryIdTb
             // 
-            this.textBox5.Location = new System.Drawing.Point(216, 191);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(151, 22);
-            this.textBox5.TabIndex = 70;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Active",
-            "NotActive"});
-            this.comboBox1.Location = new System.Drawing.Point(216, 253);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(151, 24);
-            this.comboBox1.TabIndex = 69;
+            this.SalaryIdTb.Location = new System.Drawing.Point(216, 191);
+            this.SalaryIdTb.Name = "SalaryIdTb";
+            this.SalaryIdTb.Size = new System.Drawing.Size(151, 22);
+            this.SalaryIdTb.TabIndex = 70;
             // 
             // button7
             // 
@@ -141,17 +127,18 @@
             this.button7.Text = "Month";
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // SalaryDGV
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(458, 181);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 621);
-            this.dataGridView1.TabIndex = 67;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.SalaryDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.SalaryDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SalaryDGV.Location = new System.Drawing.Point(458, 181);
+            this.SalaryDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SalaryDGV.Name = "SalaryDGV";
+            this.SalaryDGV.RowHeadersWidth = 51;
+            this.SalaryDGV.RowTemplate.Height = 24;
+            this.SalaryDGV.Size = new System.Drawing.Size(852, 621);
+            this.SalaryDGV.TabIndex = 67;
+            this.SalaryDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // button3
             // 
@@ -174,7 +161,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1262, 10);
+            this.panel2.Size = new System.Drawing.Size(1337, 10);
             this.panel2.TabIndex = 64;
             // 
             // panel1
@@ -186,7 +173,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1262, 119);
+            this.panel1.Size = new System.Drawing.Size(1337, 119);
             this.panel1.TabIndex = 63;
             // 
             // label3
@@ -197,7 +184,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1212, 9);
+            this.label3.Location = new System.Drawing.Point(1287, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -210,7 +197,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(475, 37);
+            this.label1.Location = new System.Drawing.Point(475, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(305, 36);
             this.label1.TabIndex = 0;
@@ -236,7 +223,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(765, 143);
+            this.label2.Location = new System.Drawing.Point(820, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 34);
             this.label2.TabIndex = 76;
@@ -270,19 +257,12 @@
             this.button4.Text = "Position";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // EmployeeNameTb
             // 
-            this.textBox2.Location = new System.Drawing.Point(218, 380);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 22);
-            this.textBox2.TabIndex = 81;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(218, 316);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(151, 22);
-            this.textBox3.TabIndex = 82;
+            this.EmployeeNameTb.Location = new System.Drawing.Point(218, 316);
+            this.EmployeeNameTb.Name = "EmployeeNameTb";
+            this.EmployeeNameTb.Size = new System.Drawing.Size(151, 22);
+            this.EmployeeNameTb.TabIndex = 82;
             // 
             // button9
             // 
@@ -312,6 +292,7 @@
             this.button10.TabIndex = 85;
             this.button10.Text = "UPDATE";
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // button11
             // 
@@ -326,6 +307,7 @@
             this.button11.TabIndex = 84;
             this.button11.Text = "DELETE";
             this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button12
             // 
@@ -342,28 +324,46 @@
             this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
+            // EmployeeIdCb
+            // 
+            this.EmployeeIdCb.BackColor = System.Drawing.SystemColors.Window;
+            this.EmployeeIdCb.FormattingEnabled = true;
+            this.EmployeeIdCb.Location = new System.Drawing.Point(216, 253);
+            this.EmployeeIdCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EmployeeIdCb.Name = "EmployeeIdCb";
+            this.EmployeeIdCb.Size = new System.Drawing.Size(151, 24);
+            this.EmployeeIdCb.TabIndex = 69;
+            this.EmployeeIdCb.SelectionChangeCommitted += new System.EventHandler(this.EmployeeIdCb_SelectionChangeCommitted);
+            // 
+            // PositionTb
+            // 
+            this.PositionTb.Location = new System.Drawing.Point(220, 380);
+            this.PositionTb.Name = "PositionTb";
+            this.PositionTb.Size = new System.Drawing.Size(151, 22);
+            this.PositionTb.TabIndex = 87;
+            // 
             // Salary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1262, 832);
+            this.ClientSize = new System.Drawing.Size(1337, 832);
+            this.Controls.Add(this.PositionTb);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button10);
             this.Controls.Add(this.button11);
             this.Controls.Add(this.button12);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.EmployeeNameTb);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.AmountTb);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.Periode);
+            this.Controls.Add(this.SalaryIdTb);
+            this.Controls.Add(this.EmployeeIdCb);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.SalaryDGV);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -371,9 +371,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Salary";
             this.Text = "Salary";
+            this.Load += new System.EventHandler(this.Salary_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SalaryDGV)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -385,13 +386,12 @@
 
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox AmountTb;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker Periode;
+        private System.Windows.Forms.TextBox SalaryIdTb;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView SalaryDGV;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
@@ -401,11 +401,13 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox EmployeeNameTb;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox EmployeeIdCb;
+        private System.Windows.Forms.TextBox PositionTb;
     }
 }
