@@ -216,7 +216,7 @@
             this.StudName.Name = "StudName";
             this.StudName.Size = new System.Drawing.Size(151, 22);
             this.StudName.TabIndex = 32;
-            this.StudName.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
+            
             // 
             // button1
             // 
@@ -394,7 +394,7 @@
             this.button3.TabIndex = 18;
             this.button3.Text = "Student USN";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            
             // 
             // StudUSN
             // 

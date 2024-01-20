@@ -21,34 +21,50 @@ namespace HostelManagementSystem
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
         void FillStudentDGV()
         {
+            try
+            {
+                Con.Open();
+                string myquery = "SELECT * FROM Student_tbl";
+                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
+                var ds = new DataSet();
+                da.Fill(ds);
+                StudentDGV.DataSource = ds.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                // Ensure the connection is closed even if an exception occurs
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
+            }
+        }
 
 
-            Con.Open();
-            string myquery = "SELECT * FROM Student_tbl";
-            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-            var ds = new DataSet();
-            da.Fill(ds);
-            StudentDGV.DataSource = ds.Tables[0];
-            Con.Close();
 
-        }  
-            
-    
         void FillRoomCombobox()
         {
             
                 Con.Open();
-                string query = "Select * from Room_tbl where RoomStatus = '"+"Active"+"' and Booked = '"+"Free"+"' ";
+                string query = "Select * from Room_tbl ";
                 SqlCommand cmd = new SqlCommand(query, Con);
             SqlDataReader rdr;
                 rdr = cmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Columns.Add("RoomNum", typeof(int));
                 dt.Load(rdr);
+            // Set the ValueMember and DisplayMember properties
+                StudRoomCb.ValueMember = "RoomNum"; 
+                StudRoomCb.DisplayMember = "RoomNum";
 
-                StudRoomCb.ValueMember = "RoomNum";
-                StudRoomCb.DataSource = dt;
-                Con.Close();
+            // Set the DataSource property to the DataTable
+            StudRoomCb.DataSource = dt;
+
+            Con.Close();
             
             
         }
@@ -78,14 +94,15 @@ namespace HostelManagementSystem
                 {
                     
                     Con.Open();
-                    string query = "update Student_tbl set StdName='" + StudName.Text + "',FatherName='" + FatherName.Text + "' ,MotherName='" + MotherName.Text + "' ,StdAddress='" + AddressTb.Text + "' ,College='" + CollegeTb.Text + "' ,StdRoom= " + StudRoomCb.SelectedItem.ToString() + " ,StdStatus='" + StudStatusCb.SelectedValue.ToString() + "'where StdUsn = '" + StudUSN.Text + "' ";
+                    string query = "update Student_tbl set StdName='" + StudName.Text + "',FatherName='" + FatherName.Text + "' ,MotherName='" + MotherName.Text + "' ,StdAddress='" + AddressTb.Text + "' ,College='" + CollegeTb.Text + "' ,StdRoom= " + StudRoomCb.SelectedValue.ToString() + " ,StdStatus='" + StudStatusCb.SelectedItem.ToString() + "'where StdUsn = '" + StudUSN.Text + "' ";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Student Successfully Updated");
                     Con.Close();
-                    updateBookedStatus();
-                    FillStudentDGV();
+                updateBookedStatus();
+                updateBookedStatusOnDelete();
+                FillStudentDGV();
                     FillRoomCombobox();
                     
                 }
@@ -138,7 +155,9 @@ namespace HostelManagementSystem
                     MessageBox.Show("Student Successfully Added");
 
                     Con.Close();
+
                     updateBookedStatus();
+                    updateBookedStatusOnDelete();
                     FillStudentDGV();
                     FillRoomCombobox();
                 }
@@ -172,8 +191,10 @@ namespace HostelManagementSystem
                     MessageBox.Show("Student Info Successfully Deleted");
 
                     Con.Close();
-                    updateBookedStatusOnDelete();
-                    FillStudentDGV();
+              
+                updateBookedStatus();
+                updateBookedStatusOnDelete();
+                FillStudentDGV();
                     FillRoomCombobox();
                 }
             
@@ -276,40 +297,70 @@ namespace HostelManagementSystem
         void updateBookedStatusOnDelete()
         {
             Con.Open();
-            String query = "update Room_tbl set Booked='" + "Free" + "' where RoomNum=" + StudRoomCb.SelectedItem.ToString() + "";
-            SqlCommand cmd = new SqlCommand(query, Con);
-            cmd.ExecuteNonQuery();
-            // MessageBox.Show("Room successfully Updated!");
+            string studStatus = StudStatusCb.SelectedItem?.ToString();
+
+            if (studStatus == "Left")
+            {
+                String query = "update Room_tbl set Booked='" + "Free" + "' where RoomNum=" + StudRoomCb.SelectedValue?.ToString() + "";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.ExecuteNonQuery();
+            }
+            // Add more conditions if needed
+
             Con.Close();
         }
 
         void updateBookedStatus()
         {
             Con.Open();
-            String query = "update Room_tbl set Booked='" + "busy" + "' where RoomNum=" + StudRoomCb.SelectedItem.ToString() + "";
-            SqlCommand cmd = new SqlCommand(query, Con);
-            cmd.ExecuteNonQuery();
-            // MessageBox.Show("Room successfully Updated!");
+            string studStatus = StudStatusCb.SelectedItem?.ToString();
+
+            if (studStatus == "Living")
+            {
+                String query = "update Room_tbl set Booked='" + "busy" + "' where RoomNum=" + StudRoomCb.SelectedValue?.ToString() + "";
+                SqlCommand cmd = new SqlCommand(query, Con);
+                cmd.ExecuteNonQuery();
+            }
+            // Add more conditions if needed
+
             Con.Close();
         }
-        private void textBox5_TextChanged(object sender, EventArgs e)
+        
+
+        private void StudStatusCb_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
+            if (StudStatusCb.SelectedItem != null)
+            {
+                string selectedStatus = StudStatusCb.SelectedItem.ToString();
+                updateBookedStatus();
+                updateBookedStatusOnDelete();
+            }
         }
 
         private void StudentDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            StudUSN.Text = StudentDGV.SelectedRows[0].Cells[0].Value.ToString();
-            StudName.Text = StudentDGV.SelectedRows[0].Cells[1].Value.ToString();
-            FatherName.Text = StudentDGV.SelectedRows[0].Cells[2].Value.ToString();
-            MotherName.Text = StudentDGV.SelectedRows[0].Cells[3].Value.ToString();
-            AddressTb.Text = StudentDGV.SelectedRows[0].Cells[4].Value.ToString();
-            CollegeTb.Text = StudentDGV.SelectedRows[0].Cells[5].Value.ToString();
+            if (e.RowIndex >= 0 && e.RowIndex < StudentDGV.Rows.Count && StudentDGV.SelectedRows.Count > 0)
+            {
+                StudUSN.Text = StudentDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();
+                StudName.Text = StudentDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
+                FatherName.Text = StudentDGV.Rows[e.RowIndex].Cells[2].Value?.ToString();
+                MotherName.Text = StudentDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
+                AddressTb.Text = StudentDGV.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                CollegeTb.Text = StudentDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
+
+                // Assuming the columns for StudRoom and StudStatus are at index 6 and 7
+                string selectedRoomNum = StudentDGV.Rows[e.RowIndex].Cells[6].Value?.ToString();
+                StudRoomCb.SelectedValue = selectedRoomNum;
+                StudStatusCb.SelectedItem = StudentDGV.Rows[e.RowIndex].Cells[7].Value?.ToString();
+
+                // Update the Booked status in Room_tbl based on StudStatusCb
+                updateBookedStatus();
+                updateBookedStatusOnDelete();
+
+                
+            }
         }
+
+
     }
 }
