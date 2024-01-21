@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.email = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.hidepass1 = new System.Windows.Forms.CheckBox();
+            this.hidepass = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
             this.con_password = new System.Windows.Forms.TextBox();
@@ -48,14 +51,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.hidepass = new System.Windows.Forms.CheckBox();
-            this.hidepass1 = new System.Windows.Forms.CheckBox();
             this.email.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // email
             // 
-            this.email.BackColor = System.Drawing.Color.MidnightBlue;
+            this.email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.email.Controls.Add(this.pictureBox1);
             this.email.Controls.Add(this.hidepass1);
             this.email.Controls.Add(this.hidepass);
             this.email.Controls.Add(this.linkLabel1);
@@ -77,10 +80,45 @@
             this.email.Controls.Add(this.label3);
             this.email.Controls.Add(this.label2);
             this.email.Controls.Add(this.label1);
-            this.email.Location = new System.Drawing.Point(129, 12);
+            this.email.Location = new System.Drawing.Point(129, 58);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(593, 577);
             this.email.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::HostelManagementSystem.Properties.Resources.key_4_48;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.ErrorImage = null;
+            this.pictureBox1.Location = new System.Drawing.Point(369, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(31, 30);
+            this.pictureBox1.TabIndex = 36;
+            this.pictureBox1.TabStop = false;
+            // 
+            // hidepass1
+            // 
+            this.hidepass1.AutoSize = true;
+            this.hidepass1.ForeColor = System.Drawing.SystemColors.Control;
+            this.hidepass1.Location = new System.Drawing.Point(361, 392);
+            this.hidepass1.Name = "hidepass1";
+            this.hidepass1.Size = new System.Drawing.Size(124, 20);
+            this.hidepass1.TabIndex = 35;
+            this.hidepass1.Text = "Show password";
+            this.hidepass1.UseVisualStyleBackColor = true;
+            this.hidepass1.CheckedChanged += new System.EventHandler(this.hidepass1_CheckedChanged);
+            // 
+            // hidepass
+            // 
+            this.hidepass.AutoSize = true;
+            this.hidepass.ForeColor = System.Drawing.SystemColors.Control;
+            this.hidepass.Location = new System.Drawing.Point(361, 298);
+            this.hidepass.Name = "hidepass";
+            this.hidepass.Size = new System.Drawing.Size(124, 20);
+            this.hidepass.TabIndex = 34;
+            this.hidepass.Text = "Show password";
+            this.hidepass.UseVisualStyleBackColor = true;
+            this.hidepass.CheckedChanged += new System.EventHandler(this.hidepass_CheckedChanged);
             // 
             // linkLabel1
             // 
@@ -268,42 +306,19 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Sign Up";
             // 
-            // hidepass
-            // 
-            this.hidepass.AutoSize = true;
-            this.hidepass.ForeColor = System.Drawing.SystemColors.Control;
-            this.hidepass.Location = new System.Drawing.Point(361, 298);
-            this.hidepass.Name = "hidepass";
-            this.hidepass.Size = new System.Drawing.Size(124, 20);
-            this.hidepass.TabIndex = 34;
-            this.hidepass.Text = "Show password";
-            this.hidepass.UseVisualStyleBackColor = true;
-            this.hidepass.CheckedChanged += new System.EventHandler(this.hidepass_CheckedChanged);
-            // 
-            // hidepass1
-            // 
-            this.hidepass1.AutoSize = true;
-            this.hidepass1.ForeColor = System.Drawing.SystemColors.Control;
-            this.hidepass1.Location = new System.Drawing.Point(361, 392);
-            this.hidepass1.Name = "hidepass1";
-            this.hidepass1.Size = new System.Drawing.Size(124, 20);
-            this.hidepass1.TabIndex = 35;
-            this.hidepass1.Text = "Show password";
-            this.hidepass1.UseVisualStyleBackColor = true;
-            this.hidepass1.CheckedChanged += new System.EventHandler(this.hidepass1_CheckedChanged);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HostelManagementSystem.Properties.Resources._3747425;
-            this.ClientSize = new System.Drawing.Size(852, 601);
+            this.ClientSize = new System.Drawing.Size(852, 709);
             this.Controls.Add(this.email);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Text = "Login";
             this.email.ResumeLayout(false);
             this.email.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -332,5 +347,6 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.CheckBox hidepass1;
         private System.Windows.Forms.CheckBox hidepass;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

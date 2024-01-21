@@ -135,7 +135,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 788);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1350, 23);
+            this.panel4.Size = new System.Drawing.Size(1266, 23);
             this.panel4.TabIndex = 55;
             // 
             // PaymentIdTb
@@ -179,7 +179,7 @@
             this.button7.Location = new System.Drawing.Point(46, 464);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(87, 30);
+            this.button7.Size = new System.Drawing.Size(87, 31);
             this.button7.TabIndex = 49;
             this.button7.Text = "Month";
             this.button7.UseVisualStyleBackColor = false;
@@ -188,12 +188,12 @@
             // 
             this.PaymentDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.PaymentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.PaymentDGV.Location = new System.Drawing.Point(491, 181);
+            this.PaymentDGV.Location = new System.Drawing.Point(450, 181);
             this.PaymentDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.PaymentDGV.Name = "PaymentDGV";
             this.PaymentDGV.RowHeadersWidth = 51;
             this.PaymentDGV.RowTemplate.Height = 24;
-            this.PaymentDGV.Size = new System.Drawing.Size(845, 582);
+            this.PaymentDGV.Size = new System.Drawing.Size(797, 582);
             this.PaymentDGV.TabIndex = 48;
             this.PaymentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -203,7 +203,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(822, 133);
+            this.label2.Location = new System.Drawing.Point(777, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 34);
             this.label2.TabIndex = 47;
@@ -244,7 +244,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1350, 10);
+            this.panel2.Size = new System.Drawing.Size(1266, 10);
             this.panel2.TabIndex = 43;
             // 
             // panel1
@@ -256,7 +256,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1350, 119);
+            this.panel1.Size = new System.Drawing.Size(1266, 119);
             this.panel1.TabIndex = 42;
             // 
             // label3
@@ -267,7 +267,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1300, 9);
+            this.label3.Location = new System.Drawing.Point(1216, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -280,7 +280,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(533, 29);
+            this.label1.Location = new System.Drawing.Point(462, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(256, 36);
             this.label1.TabIndex = 0;
@@ -346,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 811);
+            this.ClientSize = new System.Drawing.Size(1266, 811);
             this.Controls.Add(this.RoomNumTb);
             this.Controls.Add(this.AmountTb);
             this.Controls.Add(this.button1);

@@ -18,31 +18,19 @@ namespace HostelManagementSystem
         public Fees()
         {
             InitializeComponent();
+
         }
-        // Method to fill the ComboBox (UsnCb) with Student USNs from the Student_tbl table
+        
         public void FillUsnCb()
         {
-            try
-            {
-                // Open the database connection
                 Con.Open();
-
-                // SQL query to select Student USNs from the Student_tbl table
                 string query = "select StdUsn from Student_tbl";
-
-                // SqlCommand to execute the query
                 SqlCommand cmd = new SqlCommand(query, Con);
 
                 // SqlDataReader to read the results of the query
                 SqlDataReader rdr = cmd.ExecuteReader();
-
-                // DataTable to store the retrieved data
                 DataTable dt = new DataTable();
-
-                // Add a column named "StdUsn" to the DataTable
                 dt.Columns.Add("StdUsn", typeof(string));
-
-                // Load the DataTable with data from the SqlDataReader
                 dt.Load(rdr);
 
                 // Set the ValueMember and DataSource properties of the ComboBox (UsnCb)
@@ -51,25 +39,13 @@ namespace HostelManagementSystem
 
                 // Close the database connection
                 Con.Close();
-            }
-            catch (System.Data.SqlClient.SqlException ex)
-            {
-                // Handle SQL errors
-                MessageBox.Show("SQL Error: " + ex.Message);
-            }
-            catch (Exception ex)
-            {
-                // Handle other types of errors
-                MessageBox.Show("Error: " + ex.Message);
-            }
+           
         }
 
         
         string studname, roomname;
         public void FetchData() // Method to fetch data for a selected Student USN and update UI elements
         {
-            try
-            {
                 Con.Open();
                 string query = "select * from Student_tbl where StdUsn = '" + UsnCb.SelectedValue.ToString() + "'";
                 SqlCommand cmd = new SqlCommand(query, Con);
@@ -91,11 +67,8 @@ namespace HostelManagementSystem
                     RoomNumTb.Text = roomname;
                 }
                 Con.Close();
-            }            
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+                       
+            
         }
 
         void FillFeesDGV()
@@ -108,6 +81,7 @@ namespace HostelManagementSystem
                 var ds = new DataSet();
                 da.Fill(ds);
                 PaymentDGV.DataSource = ds.Tables[0];
+                Con.Close();
             }
             catch (Exception ex)
             {
@@ -143,14 +117,10 @@ namespace HostelManagementSystem
                 StudentNameTb.Text = PaymentDGV.Rows[e.RowIndex].Cells[2].Value?.ToString();
                 RoomNumTb.Text = PaymentDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
                 AmountTb.Text = PaymentDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
-                
-                string selectedUsn = PaymentDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
 
-                // Check if the selected value is not null before assigning
-                if (selectedUsn != null)
-                {
-                    UsnCb.SelectedValue = selectedUsn;
-                }
+                UsnCb.SelectedValue = PaymentDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();             
+                
+                
             }
         }
 
@@ -183,11 +153,10 @@ namespace HostelManagementSystem
                     MessageBox.Show("Enter The Payment Id");
                 }
                 else
-                {// Get the selected month and year from the Periode DateTimePicker
+                {
                     string paymentperiode;
-                    paymentperiode = Periode.Value.Month.ToString() + Periode.Value.Year.ToString();
-                    // This code combines the month and year to create a unique identifier for the payment period.
-                    // It converts the selected month and year to strings and concatenates them to form the payment period.
+                    paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
+                    
 
 
                     // Check if the payment for the selected month already exists
@@ -216,7 +185,14 @@ namespace HostelManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error in button9_Click: " + ex.Message);
+                MessageBox.Show("Error" + ex.Message);
+            }
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
         }
 
@@ -233,7 +209,7 @@ namespace HostelManagementSystem
                 {
                     // Check if the payment for the selected month already exists
                     Con.Open();
-                    string paymentperiode = Periode.Value.Month.ToString() + Periode.Value.Year.ToString();
+                    string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
                     SqlDataAdapter sda = new SqlDataAdapter("select count(*) from Fees_tbl where StudentUSN = '" + UsnCb.SelectedValue.ToString() + "' and PaymentMonth = '" + paymentperiode.ToString() + "'", Con);
                     DataTable dt = new DataTable();
 
@@ -262,7 +238,14 @@ namespace HostelManagementSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error in button10_Click: " + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
         }
 
@@ -290,6 +273,13 @@ namespace HostelManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
         }
 

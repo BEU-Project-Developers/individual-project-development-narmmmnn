@@ -32,10 +32,8 @@ namespace HostelManagementSystem
                     string query = "select count(*) from Registration_tbl where email = '" + u_name.Text + "' and password='" + password.Text + "'";
                     // Create a SqlCommand object to execute the SQL query and retrieve a single value
                     SqlCommand cmd = new SqlCommand(query, Con);
-
-                    // Execute the query and cast the result to an integer
+                    
                     int v = (int)cmd.ExecuteScalar();
-
 
                     if (v != 1)
                     {
@@ -59,10 +57,8 @@ namespace HostelManagementSystem
             }
             finally
             {
-                if (Con.State == ConnectionState.Open)
-                {
                     Con.Close(); 
-                }
+             
             }
         }
 
@@ -76,11 +72,9 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
+            
                 Application.Exit();
-            }
+            
         }
 
         private void password_TextChanged(object sender, EventArgs e)

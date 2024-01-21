@@ -104,9 +104,81 @@ namespace HostelManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap download {
+            get {
+                object obj = ResourceManager.GetObject("download", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_user_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-user-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap jack_michaud_kF0zCdZY2TA_unsplash {
             get {
                 object obj = ResourceManager.GetObject("jack-michaud-kF0zCdZY2TA-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key_4_16 {
+            get {
+                object obj = ResourceManager.GetObject("key-4-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key_4_48 {
+            get {
+                object obj = ResourceManager.GetObject("key-4-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap key_icon_26605 {
+            get {
+                object obj = ResourceManager.GetObject("key-icon-26605", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_black_and_white_download_clip_art_key_water_cliparts_5ab3b5ab637a93_8781894615217268914075 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-black-and-white-download-clip-art-key-water-cliparts-5ab3b5ab637a93.87818" +
+                        "94615217268914075", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kisspng_login_google_account_computer_icons_user_activity_5ac6bbe6ad7041_1621164815229736707104 {
+            get {
+                object obj = ResourceManager.GetObject("kisspng-login-google-account-computer-icons-user-activity-5ac6bbe6ad7041.16211648" +
+                        "15229736707104", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

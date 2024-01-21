@@ -37,12 +37,15 @@
             this.label9 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.password);
@@ -51,7 +54,7 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.linkLabel1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(78, 12);
+            this.panel1.Location = new System.Drawing.Point(84, 43);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(487, 402);
             this.panel1.TabIndex = 0;
@@ -61,7 +64,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.BackColor = System.Drawing.Color.Transparent;
             this.checkBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.checkBox1.Location = new System.Drawing.Point(145, 218);
+            this.checkBox1.Location = new System.Drawing.Point(126, 218);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(124, 20);
             this.checkBox1.TabIndex = 33;
@@ -75,7 +78,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label2.Location = new System.Drawing.Point(180, 15);
+            this.label2.Location = new System.Drawing.Point(161, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(130, 34);
             this.label2.TabIndex = 32;
@@ -83,7 +86,7 @@
             // 
             // password
             // 
-            this.password.Location = new System.Drawing.Point(145, 190);
+            this.password.Location = new System.Drawing.Point(126, 190);
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(260, 22);
             this.password.TabIndex = 30;
@@ -94,7 +97,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(141, 167);
+            this.label7.Location = new System.Drawing.Point(122, 167);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 20);
             this.label7.TabIndex = 29;
@@ -102,7 +105,7 @@
             // 
             // u_name
             // 
-            this.u_name.Location = new System.Drawing.Point(145, 122);
+            this.u_name.Location = new System.Drawing.Point(126, 122);
             this.u_name.Name = "u_name";
             this.u_name.Size = new System.Drawing.Size(260, 22);
             this.u_name.TabIndex = 28;
@@ -112,7 +115,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(141, 99);
+            this.label9.Location = new System.Drawing.Point(122, 99);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(57, 20);
             this.label9.TabIndex = 27;
@@ -123,7 +126,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
             this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(182, 301);
+            this.linkLabel1.Location = new System.Drawing.Point(163, 301);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(55, 16);
             this.linkLabel1.TabIndex = 26;
@@ -135,7 +138,7 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.button1.Location = new System.Drawing.Point(255, 294);
+            this.button1.Location = new System.Drawing.Point(236, 294);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 28);
             this.button1.TabIndex = 25;
@@ -143,18 +146,29 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::HostelManagementSystem.Properties.Resources.icons8_user_50;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(297, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 34);
+            this.pictureBox1.TabIndex = 34;
+            this.pictureBox1.TabStop = false;
+            // 
             // Login2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::HostelManagementSystem.Properties.Resources._3747425;
-            this.ClientSize = new System.Drawing.Size(664, 433);
+            this.ClientSize = new System.Drawing.Size(664, 496);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login2";
             this.Text = "Login2";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -170,5 +184,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -21,45 +21,31 @@ namespace HostelManagementSystem
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
         void FillStudentDGV()
         {
-            try
-            {
                 Con.Open();
                 string myquery = "SELECT * FROM Student_tbl";
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-                var ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(myquery, Con); // SqlDataAdapter to fetch data from the database
+            var ds = new DataSet();
                 da.Fill(ds);
                 StudentDGV.DataSource = ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                // Ensure the connection is closed even if an exception occurs
-                if (Con.State == ConnectionState.Open)
-                {
-                    Con.Close();
-                }
-            }
+            Con.Close();
         }
+            
 
         void FillRoomCombobox()
         {
 
             Con.Open();
-            string query = "Select * from Room_tbl ";
+            string query = "Select * from Room_tbl WHERE RoomStatus = 'Active' ";
             SqlCommand cmd = new SqlCommand(query, Con);
-            SqlDataReader rdr;
+            SqlDataReader rdr;// Declare a SqlDataReader to read data from the database
             rdr = cmd.ExecuteReader();
             DataTable dt = new DataTable();
             dt.Columns.Add("RoomNum", typeof(int));
             dt.Load(rdr);
-            // Set the ValueMember and DisplayMember properties
-            StudRoomCb.ValueMember = "RoomNum";
-            StudRoomCb.DisplayMember = "RoomNum";
+            
+            StudRoomCb.ValueMember = "RoomNum";//This is the value that the ComboBox will use as the actual value for the items.
+            StudRoomCb.DisplayMember = "RoomNum";//will be displayed to the user in the ComboBox list
 
-            // Set the DataSource property to the DataTable
             StudRoomCb.DataSource = dt;
 
             Con.Close();
@@ -80,7 +66,7 @@ namespace HostelManagementSystem
             {
                 if (StudUSN.Text == "")
                 {
-                    MessageBox.Show("Enter The Student Number");
+                    MessageBox.Show("Enter The Student USN");
                 }
                 else
                 {
@@ -97,9 +83,9 @@ namespace HostelManagementSystem
 
                     updateBookedStatus();
                     updateBookedStatusOnDelete();
-                    // Refresh the DataGridView with student data
+                    
                     FillStudentDGV();
-                    // Refresh the Room ComboBox
+                   
                     FillRoomCombobox();
                 }
             }
@@ -199,39 +185,44 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
                 Application.Exit();
-            }
+            
         }
         void updateBookedStatusOnDelete()
         {
             try
             {
                 Con.Open();
+
                 string studStatus = StudStatusCb.SelectedItem?.ToString();
 
                 // If the student status is "Left," update the corresponding room status to "Free"
-                if (studStatus == "Left")
+                if (studStatus == "Left" && StudRoomCb.SelectedValue != null)
                 {
+                    string roomNum = StudRoomCb.SelectedValue.ToString();
+                    string query = "update Room_tbl set Booked = @FreeStatus where RoomNum = @RoomNum";
 
-                    string query = "update Room_tbl set Booked='Free' where RoomNum=" + StudRoomCb.SelectedValue?.ToString();
                     SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.Parameters.AddWithValue("@FreeStatus", "Free");
+                    cmd.Parameters.AddWithValue("@RoomNum", roomNum);
+
                     cmd.ExecuteNonQuery();
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
             finally
             {
-                Con.Close();
+                // Ensure the connection is closed even if an exception occurs
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
-
         }
+
 
 
 
@@ -271,11 +262,8 @@ namespace HostelManagementSystem
             {
                 // Retrieve the selected status as a string
                 string selectedStatus = StudStatusCb.SelectedItem.ToString();
-
-                // Update the booked status in Room_tbl based on the selected status
+                // we add this when we select new item execute these task
                 updateBookedStatus();
-
-                // Update the booked status in Room_tbl based on the selected status (for deletion)
                 updateBookedStatusOnDelete();
             }
 
@@ -296,11 +284,10 @@ namespace HostelManagementSystem
                 AddressTb.Text = Convert.ToString(selectedRow.Cells["StdAddress"].Value);
                 CollegeTb.Text = Convert.ToString(selectedRow.Cells["College"].Value);
 
-                // Assuming StudRoomCb and StudStatusCb are ComboBox controls
-                StudRoomCb.SelectedItem = Convert.ToString(selectedRow.Cells["StdRoom"].Value);
+                StudRoomCb.SelectedValue = Convert.ToString(selectedRow.Cells["StdRoom"].Value);
                 StudStatusCb.SelectedItem = Convert.ToString(selectedRow.Cells["StdStatus"].Value);
 
-                // Update the Booked status in Room_tbl based on StudStatusCb
+                
                 updateBookedStatusOnDelete();
                 updateBookedStatus();
             }

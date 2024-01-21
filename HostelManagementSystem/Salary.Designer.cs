@@ -62,9 +62,9 @@
             this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 809);
+            this.panel4.Location = new System.Drawing.Point(0, 774);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1337, 23);
+            this.panel4.Size = new System.Drawing.Size(1257, 23);
             this.panel4.TabIndex = 71;
             // 
             // label4
@@ -122,7 +122,7 @@
             this.button7.Location = new System.Drawing.Point(47, 438);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(87, 29);
+            this.button7.Size = new System.Drawing.Size(87, 32);
             this.button7.TabIndex = 68;
             this.button7.Text = "Month";
             this.button7.UseVisualStyleBackColor = false;
@@ -136,7 +136,7 @@
             this.SalaryDGV.Name = "SalaryDGV";
             this.SalaryDGV.RowHeadersWidth = 51;
             this.SalaryDGV.RowTemplate.Height = 24;
-            this.SalaryDGV.Size = new System.Drawing.Size(852, 621);
+            this.SalaryDGV.Size = new System.Drawing.Size(770, 581);
             this.SalaryDGV.TabIndex = 67;
             this.SalaryDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -161,7 +161,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1337, 10);
+            this.panel2.Size = new System.Drawing.Size(1257, 10);
             this.panel2.TabIndex = 64;
             // 
             // panel1
@@ -173,7 +173,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1337, 119);
+            this.panel1.Size = new System.Drawing.Size(1257, 119);
             this.panel1.TabIndex = 63;
             // 
             // label3
@@ -184,7 +184,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1287, 9);
+            this.label3.Location = new System.Drawing.Point(1207, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -223,7 +223,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.label2.Location = new System.Drawing.Point(820, 143);
+            this.label2.Location = new System.Drawing.Point(773, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 34);
             this.label2.TabIndex = 76;
@@ -233,14 +233,14 @@
             // 
             this.button5.BackColor = System.Drawing.Color.MidnightBlue;
             this.button5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button5.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button5.Location = new System.Drawing.Point(45, 307);
             this.button5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(158, 36);
             this.button5.TabIndex = 78;
-            this.button5.Text = "Employee Name";
+            this.button5.Text = "Emp Name";
             this.button5.UseVisualStyleBackColor = false;
             // 
             // button4
@@ -346,7 +346,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1337, 832);
+            this.ClientSize = new System.Drawing.Size(1257, 797);
             this.Controls.Add(this.PositionTb);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button10);

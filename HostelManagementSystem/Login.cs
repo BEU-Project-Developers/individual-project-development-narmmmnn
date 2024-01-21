@@ -25,7 +25,14 @@ namespace HostelManagementSystem
             {
                 // Check if all the required fields are filled
                 if (first_name.Text != "" && l_name.Text != "" && date.Text != "" && gender.Text != "" && emailadd.Text != "" && address.Text != "" && password.Text != "" && con_password.Text != "")
-                {                    
+                {
+                    // Check if the email ends with "email.com"
+                    if (!emailadd.Text.EndsWith("email.com", StringComparison.OrdinalIgnoreCase))
+                    {
+                        MessageBox.Show("Email must end with 'email.com'");
+                        return;
+                    }
+
                     if (password.Text == con_password.Text)
                     {
                         // Check if the email is not already registered
@@ -84,13 +91,12 @@ namespace HostelManagementSystem
                 MessageBox.Show(ex.Message);
             }
         }
+
         int check(string email)
         {
             Con.Open();
             // Construct the SQL query to count the occurrences of a specific email in the Registration_tbl
             string query = "SELECT COUNT(*) FROM Registration_tbl WHERE email='" + email + "'";
-
-            // Create a SqlCommand object to execute the SQL query and retrieve a single value
             SqlCommand cmd = new SqlCommand(query, Con);
 
             // Execute the query and cast the result to an integer
@@ -109,14 +115,12 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
                 Application.Exit();
-            }
+            
         }
 
         private void password_TextChanged(object sender, EventArgs e)
+        // When text changes in the password TextBox, set UseSystemPasswordChar to true     
         {
             password.UseSystemPasswordChar = true;
         }
@@ -128,6 +132,8 @@ namespace HostelManagementSystem
 
         private void hidepass_CheckedChanged(object sender, EventArgs e)
         {
+            // Toggle the UseSystemPasswordChar property based on whether the CheckBox is checked or not
+            // If checked, show the actual characters; otherwise, hide them
             password.UseSystemPasswordChar = !hidepass.Checked;
         }
 

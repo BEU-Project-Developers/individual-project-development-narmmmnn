@@ -70,7 +70,7 @@ namespace HostelManagementSystem
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1339, 10);
+            this.panel2.Size = new System.Drawing.Size(1260, 10);
             this.panel2.TabIndex = 6;
             // 
             // button2
@@ -135,7 +135,7 @@ namespace HostelManagementSystem
             this.label2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(764, 144);
+            this.label2.Location = new System.Drawing.Point(714, 145);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(208, 34);
             this.label2.TabIndex = 24;
@@ -249,9 +249,9 @@ namespace HostelManagementSystem
             this.panel4.BackColor = System.Drawing.Color.MidnightBlue;
             this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 841);
+            this.panel4.Location = new System.Drawing.Point(0, 804);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1339, 23);
+            this.panel4.Size = new System.Drawing.Size(1260, 23);
             this.panel4.TabIndex = 37;
             // 
             // label4
@@ -335,7 +335,7 @@ namespace HostelManagementSystem
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1339, 119);
+            this.panel1.Size = new System.Drawing.Size(1260, 119);
             this.panel1.TabIndex = 5;
             // 
             // label3
@@ -346,7 +346,7 @@ namespace HostelManagementSystem
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1289, 9);
+            this.label3.Location = new System.Drawing.Point(1210, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -360,7 +360,7 @@ namespace HostelManagementSystem
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(458, 35);
+            this.label1.Location = new System.Drawing.Point(375, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(408, 36);
             this.label1.TabIndex = 0;
@@ -391,13 +391,12 @@ namespace HostelManagementSystem
             // 
             this.StudentDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.StudentDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.StudentDGV.Location = new System.Drawing.Point(434, 200);
+            this.StudentDGV.Location = new System.Drawing.Point(432, 191);
             this.StudentDGV.Name = "StudentDGV";
             this.StudentDGV.RowHeadersWidth = 51;
             this.StudentDGV.RowTemplate.Height = 24;
-            this.StudentDGV.Size = new System.Drawing.Size(893, 582);
+            this.StudentDGV.Size = new System.Drawing.Size(795, 582);
             this.StudentDGV.TabIndex = 43;
-            this.StudentDGV.ForeColor = System.Drawing.Color.Black;
             this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentDGV_CellContentClick);
             // 
             // Students
@@ -405,7 +404,7 @@ namespace HostelManagementSystem
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1339, 864);
+            this.ClientSize = new System.Drawing.Size(1260, 827);
             this.Controls.Add(this.StudentDGV);
             this.Controls.Add(this.StudUSN);
             this.Controls.Add(this.button9);

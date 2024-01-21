@@ -65,7 +65,7 @@
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(1284, 9);
+            this.label3.Location = new System.Drawing.Point(1224, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 36);
             this.label3.TabIndex = 1;
@@ -78,7 +78,7 @@
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label1.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label1.Location = new System.Drawing.Point(500, 28);
+            this.label1.Location = new System.Drawing.Point(392, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(429, 36);
             this.label1.TabIndex = 0;
@@ -151,7 +151,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 817);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1334, 23);
+            this.panel4.Size = new System.Drawing.Size(1274, 23);
             this.panel4.TabIndex = 56;
             // 
             // label4
@@ -174,7 +174,7 @@
             "Accountant",
             "Cleaner",
             "Hostel In Charge"});
-            this.EmpPositionCb.Location = new System.Drawing.Point(214, 466);
+            this.EmpPositionCb.Location = new System.Drawing.Point(214, 476);
             this.EmpPositionCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EmpPositionCb.Name = "EmpPositionCb";
             this.EmpPositionCb.Size = new System.Drawing.Size(151, 24);
@@ -186,7 +186,7 @@
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button8.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button8.Location = new System.Drawing.Point(50, 530);
+            this.button8.Location = new System.Drawing.Point(50, 540);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(158, 40);
@@ -200,7 +200,7 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button7.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button7.Location = new System.Drawing.Point(50, 457);
+            this.button7.Location = new System.Drawing.Point(50, 467);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(158, 36);
@@ -250,7 +250,7 @@
             this.EmpStatusCb.Items.AddRange(new object[] {
             "Working",
             "Left"});
-            this.EmpStatusCb.Location = new System.Drawing.Point(214, 540);
+            this.EmpStatusCb.Location = new System.Drawing.Point(214, 550);
             this.EmpStatusCb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EmpStatusCb.Name = "EmpStatusCb";
             this.EmpStatusCb.Size = new System.Drawing.Size(151, 24);
@@ -260,16 +260,14 @@
             // 
             this.EmployeeDGV.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.EmployeeDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.EmployeeDGV.Location = new System.Drawing.Point(468, 199);
+            this.EmployeeDGV.Location = new System.Drawing.Point(459, 185);
             this.EmployeeDGV.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.EmployeeDGV.Name = "EmployeeDGV";
             this.EmployeeDGV.RowHeadersWidth = 51;
             this.EmployeeDGV.RowTemplate.Height = 24;
-            this.EmployeeDGV.Size = new System.Drawing.Size(849, 611);
+            this.EmployeeDGV.Size = new System.Drawing.Size(785, 611);
             this.EmployeeDGV.TabIndex = 47;
             this.EmployeeDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EmployeeDGV_CellContentClick);
-            this.EmployeeDGV.ForeColor = System.Drawing.Color.Black;
-
             // 
             // label2
             // 
@@ -277,7 +275,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Control;
             this.label2.Font = new System.Drawing.Font("Verdana", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Navy;
-            this.label2.Location = new System.Drawing.Point(793, 147);
+            this.label2.Location = new System.Drawing.Point(746, 147);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(237, 34);
             this.label2.TabIndex = 46;
@@ -318,7 +316,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 119);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1334, 10);
+            this.panel2.Size = new System.Drawing.Size(1274, 10);
             this.panel2.TabIndex = 43;
             // 
             // panel1
@@ -330,12 +328,12 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1334, 119);
+            this.panel1.Size = new System.Drawing.Size(1274, 119);
             this.panel1.TabIndex = 42;
             // 
             // EmpAddTb
             // 
-            this.EmpAddTb.Location = new System.Drawing.Point(214, 398);
+            this.EmpAddTb.Location = new System.Drawing.Point(214, 408);
             this.EmpAddTb.Name = "EmpAddTb";
             this.EmpAddTb.Size = new System.Drawing.Size(151, 22);
             this.EmpAddTb.TabIndex = 62;
@@ -346,7 +344,7 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.Font = new System.Drawing.Font("Verdana", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(50, 389);
+            this.button2.Location = new System.Drawing.Point(50, 399);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 36);
@@ -358,7 +356,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1334, 840);
+            this.ClientSize = new System.Drawing.Size(1274, 840);
             this.Controls.Add(this.EmpAddTb);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button9);

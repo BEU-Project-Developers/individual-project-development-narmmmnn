@@ -19,10 +19,8 @@ namespace HostelManagementSystem
         {
             InitializeComponent();
         }
-        private void FillEmployeeIdCb()// Method to fill the ComboBox (EmployeeIdCb) with Employee Ids from the Employee_tbl table
+        private void FillEmployeeIdCb()// Method to fill the EmployeeIdCb with Employee Ids from the Employee_tbl table
         {
-            try
-            {
                 Con.Open();
                 string query = "SELECT EmpID FROM Employee_tbl";
                 SqlCommand cmd = new SqlCommand(query, Con);
@@ -32,14 +30,8 @@ namespace HostelManagementSystem
                 dt.Load(rdr);
                 EmployeeIdCb.ValueMember = "EmpID";
                 EmployeeIdCb.DataSource = dt;
-            }
-            finally
-            {
-                if (Con.State == ConnectionState.Open)
-                {
-                    Con.Close();
-                }
-            }
+                Con.Close();
+            
         }
         string empname, emppos;
         public void FetchData()// Method to fetch data for a selected Employee Id and update UI elements
@@ -63,26 +55,14 @@ namespace HostelManagementSystem
 
         void FillSalaryDGV()
         {
-            try
-            {
                 Con.Open();
                 string myquery = "SELECT * FROM Salary_tbl";
                 SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
                 var ds = new DataSet();
                 da.Fill(ds);
                 SalaryDGV.DataSource = ds.Tables[0];
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
-            finally
-            {
-                if (Con.State == ConnectionState.Open)
-                {
-                    Con.Close();
-                }
-            }
+                Con.Close();
+                     
         }
         private void label3_Click(object sender, EventArgs e)
         {
@@ -118,11 +98,8 @@ namespace HostelManagementSystem
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
                 Application.Exit();
-            }
+            
         }
 
         private void Salary_Load(object sender, EventArgs e)
@@ -143,7 +120,7 @@ namespace HostelManagementSystem
                 else
                 {
                     // Get the selected month and year from the Periode DateTimePicker
-                    string paymentperiode = Periode.Value.Month.ToString() + Periode.Value.Year.ToString();
+                    string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
 
                     // Check if the salary for the selected month already exists
                     Con.Open();
@@ -181,6 +158,13 @@ namespace HostelManagementSystem
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
+            }
         }
 
 
@@ -204,8 +188,6 @@ namespace HostelManagementSystem
                 {
                     Con.Open();
                     string query = "DELETE FROM Salary_tbl WHERE SalID = @SalID";
-
-                    // SqlCommand to execute the delete query
                     SqlCommand cmd = new SqlCommand(query, Con);
 
                     // Add a parameter for the Salary ID to prevent SQL injection
@@ -219,6 +201,13 @@ namespace HostelManagementSystem
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
         }
 
@@ -234,17 +223,15 @@ namespace HostelManagementSystem
                 else
                 {
                     Con.Open();
+                    
+                    string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
 
-                    // Generate a  payment period based on the selected month and year
-                    string newPaymentPeriode = Periode.Value.Month.ToString() + Periode.Value.Year.ToString();
-
-                    // SQL update query to update Salary_tbl
                     string query = "UPDATE Salary_tbl SET SalAmount = @SalAmount, SalMonth = @SalMonth WHERE SalID = @SalID";
                     SqlCommand cmd = new SqlCommand(query, Con);
 
                     // Set parameters to avoid SQL injection
                     cmd.Parameters.AddWithValue("@SalAmount", AmountTb.Text);
-                    cmd.Parameters.AddWithValue("@SalMonth", newPaymentPeriode);
+                    cmd.Parameters.AddWithValue("@SalMonth", paymentperiode);
                     cmd.Parameters.AddWithValue("@SalID", SalaryIdTb.Text);
 
                     cmd.ExecuteNonQuery();

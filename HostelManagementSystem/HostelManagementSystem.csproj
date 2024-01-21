@@ -174,5 +174,26 @@
   <ItemGroup>
     <None Include="Resources\pastel-purple-color-solid-background-1920x1080.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-icon-26605.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-black-and-white-download-clip-art-key-water-cliparts-5ab3b5ab637a93.8781894615217268914075.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kisspng-login-google-account-computer-icons-user-activity-5ac6bbe6ad7041.1621164815229736707104.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-4-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key-4-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-user-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\download.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

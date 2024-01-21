@@ -22,8 +22,7 @@ namespace HostelManagementSystem
         
         void FillEmployeeDGV()
         {
-            try
-            {
+            
                 Con.Open();
                 string myquery = "SELECT * FROM Employee_tbl";
 
@@ -32,18 +31,12 @@ namespace HostelManagementSystem
 
                 // DataSet to store the retrieved data
                 var ds = new DataSet();
-
-                // Fill the DataSet with data from the Employee_tbl table
                 da.Fill(ds);
 
                 // Set the DataSource of the Employee DataGridView to the DataSet
                 EmployeeDGV.DataSource = ds.Tables[0];
                 Con.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
-            }
+            
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -65,11 +58,9 @@ namespace HostelManagementSystem
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
+            
                 Application.Exit();
-            }
+            
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -151,43 +142,53 @@ namespace HostelManagementSystem
                 EmpPhoneTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[2].Value?.ToString();
                 EmpAddTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
 
-                // Check if the item exists in the combo box before setting it
-                string positionValue = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString();
-                if (EmpPositionCb.Items.Contains(positionValue))
-                {
+                
+                string positionValue = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString();                
                     EmpPositionCb.SelectedItem = positionValue;
-                }
+                
 
-                string statusValue = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
-                if (EmpStatusCb.Items.Contains(statusValue))
-                {
+                string statusValue = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();                
                     EmpStatusCb.SelectedItem = statusValue;
-                }
+                
             }
         }
 
 
         private void button10_Click(object sender, EventArgs e)
         {
-            if (EmpIdTb.Text == "" || EmpNameTb.Text == "" || EmpPhoneTb.Text == "" || EmpAddTb.Text == "" || EmpPositionCb.SelectedItem.ToString() == "" || EmpStatusCb.SelectedItem.ToString() == "")
+            // Check if all the fields are filled
+            if (EmpIdTb.Text == "" || EmpNameTb.Text == "" || EmpPhoneTb.Text == "" || EmpAddTb.Text == "" || EmpPositionCb.SelectedItem == null || EmpPositionCb.SelectedItem.ToString() == "" || EmpStatusCb.SelectedItem == null || EmpStatusCb.SelectedItem.ToString() == "")
             {
                 MessageBox.Show("Fill All The Information");
             }
             else
             {
+                try
+                {                   
+                    Con.Open();                    
+                    string query = "update Employee_tbl set EmpName='" + EmpNameTb.Text + "',EmpPhone='" + EmpPhoneTb.Text + "' ,EmpAddress='" + EmpAddTb.Text + "' ,EmpPos='" + EmpPositionCb.SelectedItem.ToString() + "' ,EmpStatus='" + EmpStatusCb.SelectedItem.ToString() + "' where EmpID = '" + EmpIdTb.Text + "'";
 
-                Con.Open();
-                string query = "update Employee_tbl set EmpName='" + EmpNameTb.Text + "',EmpPhone='" + EmpPhoneTb.Text + "' ,EmpAddress='" + EmpAddTb.Text + "' ,EmpPos='" + EmpPositionCb.SelectedItem.ToString() + "' ,EmpStatus='" + EmpStatusCb.SelectedItem.ToString() + "' where EmpID = '" + EmpIdTb.Text + "' ";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                cmd.ExecuteNonQuery();
+                    // Execute the query
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+                    MessageBox.Show("Employee Info Successfully Updated");
+                    Con.Close();
+                    
+                    FillEmployeeDGV();
+                }
+                catch (Exception ex)
+                {
+                   
+                    MessageBox.Show("An error occurred: " + ex.Message);
 
-                MessageBox.Show("Employee Info Successfully Updated");
-                Con.Close();
-                
-                FillEmployeeDGV();
-                
-
+                    // Ensure the connection is closed if an exception occurs
+                    if (Con.State == System.Data.ConnectionState.Open)
+                    {
+                        Con.Close();
+                    }
+                }
             }
         }
+
     }
 }
