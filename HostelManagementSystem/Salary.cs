@@ -21,22 +21,28 @@ namespace HostelManagementSystem
         }
         private void FillEmployeeIdCb()// Method to fill the EmployeeIdCb with Employee Ids from the Employee_tbl table
         {
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string query = "SELECT EmpID FROM Employee_tbl";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                SqlDataReader rdr = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("EmpID", typeof(string));
-                dt.Load(rdr);
-                EmployeeIdCb.ValueMember = "EmpID";
-                EmployeeIdCb.DataSource = dt;
-                Con.Close();
-            
+            }
+            string query = "SELECT EmpID FROM Employee_tbl";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            SqlDataReader rdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("EmpID", typeof(string));
+            dt.Load(rdr);
+            EmployeeIdCb.ValueMember = "EmpID";
+            EmployeeIdCb.DataSource = dt;
+            Con.Close();
+
         }
         string empname, emppos;
         public void FetchData()// Method to fetch data for a selected Employee Id and update UI elements
         {
-            Con.Open();
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
             string query = "select * from Employee_tbl where EmpID = '" + EmployeeIdCb.SelectedValue.ToString() + "'";
             SqlCommand cmd = new SqlCommand(query, Con);
             DataTable dt = new DataTable();
@@ -55,20 +61,23 @@ namespace HostelManagementSystem
 
         void FillSalaryDGV()
         {
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string myquery = "SELECT * FROM Salary_tbl";
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-                var ds = new DataSet();
-                da.Fill(ds);
-                SalaryDGV.DataSource = ds.Tables[0];
-                Con.Close();
-                     
+            }
+            string myquery = "SELECT * FROM Salary_tbl";
+            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
+            var ds = new DataSet();
+            da.Fill(ds);
+            SalaryDGV.DataSource = ds.Tables[0];
+            Con.Close();
+
         }
         private void label3_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        
+
 
         private void button12_Click(object sender, EventArgs e)
         {
@@ -88,18 +97,16 @@ namespace HostelManagementSystem
                 AmountTb.Text = SalaryDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
 
                 string selectedId = SalaryDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                // Check if the selected value is not null before assigning
-                if (selectedId != null)
-                {
-                    EmployeeIdCb.SelectedValue = selectedId;
-                }
+
+                EmployeeIdCb.SelectedValue = selectedId;
+
             }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-                Application.Exit();
-            
+            Application.Exit();
+
         }
 
         private void Salary_Load(object sender, EventArgs e)
@@ -123,13 +130,16 @@ namespace HostelManagementSystem
                     string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
 
                     // Check if the salary for the selected month already exists
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Salary_tbl WHERE SalEmpID = @EmpID AND SalMonth = @Month", Con);
                     sda.SelectCommand.Parameters.AddWithValue("@EmpID", EmployeeIdCb.SelectedValue.ToString());
                     sda.SelectCommand.Parameters.AddWithValue("@Month", paymentperiode);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
-                    Con.Close(); 
+                    Con.Close();
 
                     if (dt.Rows[0][0].ToString() == "1")
                     {
@@ -137,7 +147,10 @@ namespace HostelManagementSystem
                     }
                     else
                     {
-                        Con.Open();
+                        if (Con.State == ConnectionState.Closed)
+                        {
+                            Con.Open();
+                        }
                         string query = "INSERT INTO Salary_tbl (SalID, SalEmpID, SalEmpName, SalEmpPosition, SalMonth, SalAmount) VALUES (@SalID, @EmpID, @EmpName, @Position, @Month, @Amount)";
                         SqlCommand cmd = new SqlCommand(query, Con);
                         cmd.Parameters.AddWithValue("@SalID", SalaryIdTb.Text);
@@ -148,7 +161,7 @@ namespace HostelManagementSystem
                         cmd.Parameters.AddWithValue("@Amount", AmountTb.Text);
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Salary Payment Success");
-                        Con.Close(); 
+                        Con.Close();
                     }
 
                     FillSalaryDGV();
@@ -186,7 +199,10 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "DELETE FROM Salary_tbl WHERE SalID = @SalID";
                     SqlCommand cmd = new SqlCommand(query, Con);
 
@@ -222,8 +238,11 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    Con.Open();
-                    
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
+
                     string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
 
                     string query = "UPDATE Salary_tbl SET SalAmount = @SalAmount, SalMonth = @SalMonth WHERE SalID = @SalID";

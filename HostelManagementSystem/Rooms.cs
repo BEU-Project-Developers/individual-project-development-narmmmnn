@@ -19,24 +19,27 @@ namespace HostelManagementSystem
         }
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
 
-        // Method to fill the Room DataGridView
+
         void FillRoomDGV()
         {
-            
+
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                // SQL query to select all records from Room_tbl
-                string myquery = "Select * from Room_tbl";
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
-                SqlCommandBuilder builder = new SqlCommandBuilder(); // SqlCommandBuilder is used to automatically generate SQL commands for updating the database
-                var ds = new DataSet();
-                da.Fill(ds);
-                // Set the DataGridView's data source to the retrieved dataset
-                RoomDGV.DataSource = ds.Tables[0];
-            
-          
+            }
+            string myquery = "Select * from Room_tbl";
+            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
+            SqlCommandBuilder builder = new SqlCommandBuilder(); // SqlCommandBuilder is used to automatically generate SQL commands for updating the database
+            var ds = new DataSet();
+            da.Fill(ds);
+            // Set the DataGridView's data source to the retrieved dataset
+            RoomDGV.DataSource = ds.Tables[0];
+            Con.Close();
+
+
         }
 
-        string RoomBooked;
+
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -50,8 +53,10 @@ namespace HostelManagementSystem
                 {
                     // Determine if the room is booked or free based on the radio button
                     string roomBooked = YesRadio.Checked ? "Busy" : "Free";
-
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     // SQL query to insert a new room into Room_tbl
                     string query = "INSERT INTO Room_tbl (RoomNum, RoomStatus, Booked) VALUES (@RoomNum, @RoomStatus, @Booked)";
                     SqlCommand cmd = new SqlCommand(query, Con);
@@ -66,7 +71,6 @@ namespace HostelManagementSystem
                     MessageBox.Show("Room Successfully Added");
 
                     Con.Close();
-                    // Refresh the DataGridView after adding a new room
                     FillRoomDGV();
                 }
             }
@@ -76,7 +80,11 @@ namespace HostelManagementSystem
             }
             finally
             {
-                Con.Close();
+
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
         }
 
@@ -91,10 +99,12 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    // Determine if the room is booked or free
                     string roomBooked = YesRadio.Checked ? "Busy" : "Free";
 
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     // SQL query to update an existing room in Room_tbl
                     string query = "update Room_tbl set RoomStatus='" + RoomStatusCb.SelectedItem.ToString() + "', Booked='" + roomBooked + "' where RoomNum = " + RoomNumbTb.Text + "";
                     SqlCommand cmd = new SqlCommand(query, Con);
@@ -113,7 +123,11 @@ namespace HostelManagementSystem
             }
             finally
             {
-                Con.Close();
+
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
 
         }
@@ -143,10 +157,13 @@ namespace HostelManagementSystem
                     // Determine if the room is booked or free based on the radio button
                     string roomBooked = YesRadio.Checked ? "Busy" : "Free";
 
-                    Con.Open();                    
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "DELETE FROM Room_tbl WHERE RoomNum = @RoomNum";
 
-                    SqlCommand cmd = new SqlCommand(query, Con); // Create SqlCommand Object
+                    SqlCommand cmd = new SqlCommand(query, Con); // Create SqlCommand Object to execute and retrieve single value
                     cmd.Parameters.AddWithValue("@RoomNum", RoomNumbTb.Text); // used for replace roomnum placeholder, the value is  RoomNumbTb.Text
 
                     cmd.ExecuteNonQuery();
@@ -154,8 +171,6 @@ namespace HostelManagementSystem
                     MessageBox.Show("Room Successfully Deleted");
 
                     Con.Close();
-
-
                     FillRoomDGV();
                 }
             }
@@ -165,23 +180,24 @@ namespace HostelManagementSystem
             }
             finally
             {
-                Con.Close();
+
+                if (Con.State == ConnectionState.Open)
+                {
+                    Con.Close();
+                }
             }
 
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-        
-                Application.Exit();
-            
+            Application.Exit();
         }
-        
+
 
         private void Rooms_Load(object sender, EventArgs e)
         {
             FillRoomDGV();
-
         }
 
         private void RoomDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -189,12 +205,12 @@ namespace HostelManagementSystem
             // Check if the clicked row is valid
             if (e.RowIndex >= 0 && e.RowIndex < RoomDGV.Rows.Count)
             {
+                // the null-conditional operator (?.) to safely access the ToString
                 RoomNumbTb.Text = RoomDGV.Rows[e.RowIndex].Cells[0].Value?.ToString();
-              
-                // Assuming UsnCb is a ComboBox
+
                 string selectedstatus = RoomDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
-                 RoomStatusCb.SelectedItem = selectedstatus;
-                
+                RoomStatusCb.SelectedItem = selectedstatus;
+
             }
         }
     }

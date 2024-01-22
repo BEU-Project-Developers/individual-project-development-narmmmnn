@@ -13,11 +13,11 @@ namespace HostelManagementSystem
 {
     public partial class Login2 : Form
     {
-  
+
         public Login2()
         {
             InitializeComponent();
-            
+
         }
         SqlConnection Con = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\LENOVO\\Documents\\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
 
@@ -27,12 +27,15 @@ namespace HostelManagementSystem
             {
                 if (u_name.Text != "" && password.Text != "")
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     // SQL query to check the count of rows where the given email and password match
                     string query = "select count(*) from Registration_tbl where email = '" + u_name.Text + "' and password='" + password.Text + "'";
                     // Create a SqlCommand object to execute the SQL query and retrieve a single value
                     SqlCommand cmd = new SqlCommand(query, Con);
-                    
+
                     int v = (int)cmd.ExecuteScalar();
 
                     if (v != 1)
@@ -57,8 +60,7 @@ namespace HostelManagementSystem
             }
             finally
             {
-                    Con.Close(); 
-             
+                Con.Close();
             }
         }
 
@@ -72,15 +74,12 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            
-                Application.Exit();
-            
+            Application.Exit();
         }
 
         private void password_TextChanged(object sender, EventArgs e)
         {
             password.UseSystemPasswordChar = true;
-            
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)

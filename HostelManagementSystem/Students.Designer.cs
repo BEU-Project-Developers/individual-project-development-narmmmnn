@@ -398,6 +398,7 @@ namespace HostelManagementSystem
             this.StudentDGV.Size = new System.Drawing.Size(795, 582);
             this.StudentDGV.TabIndex = 43;
             this.StudentDGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentDGV_CellContentClick);
+            this.StudentDGV.ForeColor= System.Drawing.SystemColors.ControlText;
             // 
             // Students
             // 

@@ -21,20 +21,26 @@ namespace HostelManagementSystem
         SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\LENOVO\Documents\HostelMgmt.mdf;Integrated Security=True;Connect Timeout=30");
         void FillStudentDGV()
         {
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string myquery = "SELECT * FROM Student_tbl";
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con); // SqlDataAdapter to fetch data from the database
+            }
+            string myquery = "SELECT * FROM Student_tbl";
+            SqlDataAdapter da = new SqlDataAdapter(myquery, Con); // SqlDataAdapter to fetch data from the database
             var ds = new DataSet();
-                da.Fill(ds);
-                StudentDGV.DataSource = ds.Tables[0];
+            da.Fill(ds);
+            StudentDGV.DataSource = ds.Tables[0];
             Con.Close();
         }
-            
+
 
         void FillRoomCombobox()
         {
 
-            Con.Open();
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
             string query = "Select * from Room_tbl WHERE RoomStatus = 'Active' ";
             SqlCommand cmd = new SqlCommand(query, Con);
             SqlDataReader rdr;// Declare a SqlDataReader to read data from the database
@@ -42,7 +48,7 @@ namespace HostelManagementSystem
             DataTable dt = new DataTable();
             dt.Columns.Add("RoomNum", typeof(int));
             dt.Load(rdr);
-            
+
             StudRoomCb.ValueMember = "RoomNum";//This is the value that the ComboBox will use as the actual value for the items.
             StudRoomCb.DisplayMember = "RoomNum";//will be displayed to the user in the ComboBox list
 
@@ -71,7 +77,10 @@ namespace HostelManagementSystem
                 else
                 {
                     // Open the database connection
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "update Student_tbl set StdName='" + StudName.Text + "', FatherName='" + FatherName.Text + "' , MotherName='" + MotherName.Text + "' , StdAddress='" + AddressTb.Text + "' , College='" + CollegeTb.Text + "' , StdRoom= " + StudRoomCb.SelectedValue.ToString() + " , StdStatus='" + StudStatusCb.SelectedItem.ToString() + "' where StdUsn = '" + StudUSN.Text + "' ";
 
                     // Execute the query
@@ -83,9 +92,9 @@ namespace HostelManagementSystem
 
                     updateBookedStatus();
                     updateBookedStatusOnDelete();
-                    
+
                     FillStudentDGV();
-                   
+
                     FillRoomCombobox();
                 }
             }
@@ -111,7 +120,10 @@ namespace HostelManagementSystem
             {
                 try
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
 
                     // SQL query to insert a new student into Student_tbl using parameters to avoid SQL injection
                     string query = "INSERT INTO Student_tbl VALUES (@StdUSN, @StdName, @FatherName, @MotherName, @StdAddress, @College, @StdRoom, @StdStatus)";
@@ -157,7 +169,10 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "delete from Student_tbl where StdUsn = '" + StudUSN.Text + "' ";
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();
@@ -185,14 +200,17 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-                Application.Exit();
-            
+            Application.Exit();
+
         }
         void updateBookedStatusOnDelete()
         {
             try
             {
-                Con.Open();
+                if (Con.State == ConnectionState.Closed)
+                {
+                    Con.Open();
+                }
 
                 string studStatus = StudStatusCb.SelectedItem?.ToString();
 
@@ -205,7 +223,6 @@ namespace HostelManagementSystem
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.Parameters.AddWithValue("@FreeStatus", "Free");
                     cmd.Parameters.AddWithValue("@RoomNum", roomNum);
-
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -215,7 +232,7 @@ namespace HostelManagementSystem
             }
             finally
             {
-                // Ensure the connection is closed even if an exception occurs
+
                 if (Con.State == ConnectionState.Open)
                 {
                     Con.Close();
@@ -224,13 +241,14 @@ namespace HostelManagementSystem
         }
 
 
-
-
         void updateBookedStatus()
         {
             try
             {
-                Con.Open();
+                if (Con.State == ConnectionState.Closed)
+                {
+                    Con.Open();
+                }
 
                 // Get the selected student status from StudStatusCb
                 string studStatus = StudStatusCb.SelectedItem?.ToString();
@@ -267,7 +285,7 @@ namespace HostelManagementSystem
                 updateBookedStatusOnDelete();
             }
 
-        }        
+        }
 
         private void StudentDGV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -287,7 +305,7 @@ namespace HostelManagementSystem
                 StudRoomCb.SelectedValue = Convert.ToString(selectedRow.Cells["StdRoom"].Value);
                 StudStatusCb.SelectedItem = Convert.ToString(selectedRow.Cells["StdStatus"].Value);
 
-                
+
                 updateBookedStatusOnDelete();
                 updateBookedStatus();
             }

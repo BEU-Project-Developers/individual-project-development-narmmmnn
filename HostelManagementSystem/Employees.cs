@@ -19,24 +19,27 @@ namespace HostelManagementSystem
         {
             InitializeComponent();
         }
-        
+
         void FillEmployeeDGV()
         {
-            
+
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string myquery = "SELECT * FROM Employee_tbl";
+            }
+            string myquery = "SELECT * FROM Employee_tbl";
 
-                // SqlDataAdapter to fetch data from the database
-                SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
+            // SqlDataAdapter to fetch data from the database
+            SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
 
-                // DataSet to store the retrieved data
-                var ds = new DataSet();
-                da.Fill(ds);
+            // DataSet to store the retrieved data
+            var ds = new DataSet();
+            da.Fill(ds);
 
-                // Set the DataSource of the Employee DataGridView to the DataSet
-                EmployeeDGV.DataSource = ds.Tables[0];
-                Con.Close();
-            
+            // Set the DataSource of the Employee DataGridView to the DataSet
+            EmployeeDGV.DataSource = ds.Tables[0];
+            Con.Close();
+
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -58,9 +61,7 @@ namespace HostelManagementSystem
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            
-                Application.Exit();
-            
+            Application.Exit();
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -73,19 +74,21 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    Con.Open();
-
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     // SQL query to delete employee information based on the provided Employee Id
                     string query = "DELETE FROM Employee_tbl WHERE EmpID = '" + EmpIdTb.Text + "'";
 
                     SqlCommand cmd = new SqlCommand(query, Con);
-                    cmd.ExecuteNonQuery();                   
+                    cmd.ExecuteNonQuery();
                     MessageBox.Show("Employee Info Successfully Deleted");
 
                     Con.Close();
                     FillEmployeeDGV();
                 }
-            }            
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
@@ -103,7 +106,10 @@ namespace HostelManagementSystem
             {
                 try
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     // SQL query to insert a new employee into Employee_tbl using parameters to avoid SQL injection
                     String query = "INSERT INTO Employee_tbl VALUES (@EmpId, @EmpName, @EmpPhone, @EmpAddress, @EmpPosition, @EmpStatus)";
                     SqlCommand cmd = new SqlCommand(query, Con);
@@ -142,14 +148,14 @@ namespace HostelManagementSystem
                 EmpPhoneTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[2].Value?.ToString();
                 EmpAddTb.Text = EmployeeDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
 
-                
-                string positionValue = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString();                
-                    EmpPositionCb.SelectedItem = positionValue;
-                
 
-                string statusValue = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();                
-                    EmpStatusCb.SelectedItem = statusValue;
-                
+                string positionValue = EmployeeDGV.Rows[e.RowIndex].Cells[4].Value?.ToString();
+                EmpPositionCb.SelectedItem = positionValue;
+
+
+                string statusValue = EmployeeDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
+                EmpStatusCb.SelectedItem = statusValue;
+
             }
         }
 
@@ -164,8 +170,11 @@ namespace HostelManagementSystem
             else
             {
                 try
-                {                   
-                    Con.Open();                    
+                {
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "update Employee_tbl set EmpName='" + EmpNameTb.Text + "',EmpPhone='" + EmpPhoneTb.Text + "' ,EmpAddress='" + EmpAddTb.Text + "' ,EmpPos='" + EmpPositionCb.SelectedItem.ToString() + "' ,EmpStatus='" + EmpStatusCb.SelectedItem.ToString() + "' where EmpID = '" + EmpIdTb.Text + "'";
 
                     // Execute the query
@@ -173,12 +182,11 @@ namespace HostelManagementSystem
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Employee Info Successfully Updated");
                     Con.Close();
-                    
+
                     FillEmployeeDGV();
                 }
                 catch (Exception ex)
                 {
-                   
                     MessageBox.Show("An error occurred: " + ex.Message);
 
                     // Ensure the connection is closed if an exception occurs

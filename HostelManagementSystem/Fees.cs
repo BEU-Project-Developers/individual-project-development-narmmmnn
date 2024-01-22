@@ -20,62 +20,71 @@ namespace HostelManagementSystem
             InitializeComponent();
 
         }
-        
+
         public void FillUsnCb()
         {
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string query = "select StdUsn from Student_tbl";
-                SqlCommand cmd = new SqlCommand(query, Con);
+            }
+            string query = "select StdUsn from Student_tbl";
+            SqlCommand cmd = new SqlCommand(query, Con);
 
-                // SqlDataReader to read the results of the query
-                SqlDataReader rdr = cmd.ExecuteReader();
-                DataTable dt = new DataTable();
-                dt.Columns.Add("StdUsn", typeof(string));
-                dt.Load(rdr);
+            // SqlDataReader to read the results of the query
+            SqlDataReader rdr = cmd.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("StdUsn", typeof(string));
+            dt.Load(rdr);
 
-                // Set the ValueMember and DataSource properties of the ComboBox (UsnCb)
-                UsnCb.ValueMember = "StdUsn";
-                UsnCb.DataSource = dt;
+            // Set the ValueMember and DataSource properties of the ComboBox (UsnCb)
+            UsnCb.ValueMember = "StdUsn";
+            UsnCb.DataSource = dt;
 
-                // Close the database connection
-                Con.Close();
-           
+            // Close the database connection
+            Con.Close();
+
         }
 
-        
+
         string studname, roomname;
         public void FetchData() // Method to fetch data for a selected Student USN and update UI elements
         {
+            if (Con.State == ConnectionState.Closed)
+            {
                 Con.Open();
-                string query = "select * from Student_tbl where StdUsn = '" + UsnCb.SelectedValue.ToString() + "'";
-                SqlCommand cmd = new SqlCommand(query, Con);
-                DataTable dt = new DataTable();
+            }
+            string query = "select * from Student_tbl where StdUsn = '" + UsnCb.SelectedValue.ToString() + "'";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            DataTable dt = new DataTable();
 
-                // SqlDataAdapter to fill the DataTable with data from the SqlCommand
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(dt);
+            // SqlDataAdapter to fill the DataTable with data from the SqlCommand
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
 
-               
-                foreach (DataRow dr in dt.Rows) // Loop through the rows in the DataTable
-                {
-                    // Extract values from the DataRow and store in variables
-                    studname = dr["StdName"].ToString();
-                    roomname = dr["StdRoom"].ToString();
 
-                    // Update UI elements (text boxes) with the retrieved data
-                    StudentNameTb.Text = studname;
-                    RoomNumTb.Text = roomname;
-                }
-                Con.Close();
-                       
-            
+            foreach (DataRow dr in dt.Rows) // Loop through the rows in the DataTable
+            {
+                // Extract values from the DataRow and store in variables
+                studname = dr["StdName"].ToString();
+                roomname = dr["StdRoom"].ToString();
+
+                // Update UI elements (text boxes) with the retrieved data
+                StudentNameTb.Text = studname;
+                RoomNumTb.Text = roomname;
+            }
+            Con.Close();
+
+
         }
 
         void FillFeesDGV()
         {
             try
             {
-                Con.Open();
+                if (Con.State == ConnectionState.Closed)
+                {
+                    Con.Open();
+                }
                 string myquery = "SELECT * FROM Fees_tbl";
                 SqlDataAdapter da = new SqlDataAdapter(myquery, Con);
                 var ds = new DataSet();
@@ -118,25 +127,22 @@ namespace HostelManagementSystem
                 RoomNumTb.Text = PaymentDGV.Rows[e.RowIndex].Cells[3].Value?.ToString();
                 AmountTb.Text = PaymentDGV.Rows[e.RowIndex].Cells[5].Value?.ToString();
 
-                UsnCb.SelectedValue = PaymentDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();             
-                
-                
+                UsnCb.SelectedValue = PaymentDGV.Rows[e.RowIndex].Cells[1].Value?.ToString();
+
+
             }
         }
 
 
         private void Fees_Load(object sender, EventArgs e)
         {
-            FillUsnCb();           
+            FillUsnCb();
             FillFeesDGV();
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            base.OnFormClosing(e);
-            if (e.CloseReason == CloseReason.UserClosing)
-            {
-                Application.Exit();
-            }
+            Application.Exit();
+
         }
 
         private void UsnCb_SelectionChangeCommitted(object sender, EventArgs e)
@@ -156,11 +162,14 @@ namespace HostelManagementSystem
                 {
                     string paymentperiode;
                     paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
-                    
+
 
 
                     // Check if the payment for the selected month already exists
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     SqlDataAdapter sda = new SqlDataAdapter("select count(*) from Fees_tbl where StudentUSN = '" + UsnCb.SelectedValue.ToString() + "' and PaymentMonth = '" + paymentperiode.ToString() + "'", Con);
                     DataTable dt = new DataTable();
                     sda.Fill(dt);
@@ -172,8 +181,11 @@ namespace HostelManagementSystem
                     }
                     else
                     {
-                        
-                        Con.Open();
+
+                        if (Con.State == ConnectionState.Closed)
+                        {
+                            Con.Open();
+                        }
                         string query = "INSERT INTO Fees_tbl VALUES (" + PaymentIdTb.Text + ",'" + UsnCb.SelectedValue.ToString() + "' , '" + StudentNameTb.Text + "' , " + RoomNumTb.Text + " , '" + paymentperiode + "'," + AmountTb.Text + ")";
                         SqlCommand cmd = new SqlCommand(query, Con);
                         cmd.ExecuteNonQuery();
@@ -208,13 +220,16 @@ namespace HostelManagementSystem
                 else
                 {
                     // Check if the payment for the selected month already exists
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string paymentperiode = Periode.Value.Month.ToString() + "/" + Periode.Value.Year.ToString();
                     SqlDataAdapter sda = new SqlDataAdapter("select count(*) from Fees_tbl where StudentUSN = '" + UsnCb.SelectedValue.ToString() + "' and PaymentMonth = '" + paymentperiode.ToString() + "'", Con);
                     DataTable dt = new DataTable();
 
                     sda.Fill(dt);
-                    Con.Close(); 
+                    Con.Close();
 
                     // If the payment for the selected month doesn't exist, proceed with updating
                     if (dt.Rows[0][0].ToString() == "1")
@@ -261,7 +276,10 @@ namespace HostelManagementSystem
                 }
                 else
                 {
-                    Con.Open();
+                    if (Con.State == ConnectionState.Closed)
+                    {
+                        Con.Open();
+                    }
                     string query = "delete from Fees_tbl where PaymentID = " + PaymentIdTb.Text;
                     SqlCommand cmd = new SqlCommand(query, Con);
                     cmd.ExecuteNonQuery();

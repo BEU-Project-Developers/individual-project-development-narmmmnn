@@ -22,8 +22,7 @@ namespace HostelManagementSystem
         private void button1_Click(object sender, EventArgs e)
         {
             try
-            {
-                // Check if all the required fields are filled
+            {                
                 if (first_name.Text != "" && l_name.Text != "" && date.Text != "" && gender.Text != "" && emailadd.Text != "" && address.Text != "" && password.Text != "" && con_password.Text != "")
                 {
                     // Check if the email ends with "email.com"
@@ -42,7 +41,10 @@ namespace HostelManagementSystem
                         {
                             // If email is not registered, proceed with registration
                             Random random = new Random();
-                            Con.Open();
+                            if (Con.State == ConnectionState.Closed)
+                            {
+                                Con.Open();
+                            }
                             int Id = random.Next();
 
                             // Insert user registration data into the Registration_tbl
@@ -94,7 +96,10 @@ namespace HostelManagementSystem
 
         int check(string email)
         {
-            Con.Open();
+            if (Con.State == ConnectionState.Closed)
+            {
+                Con.Open();
+            }
             // Construct the SQL query to count the occurrences of a specific email in the Registration_tbl
             string query = "SELECT COUNT(*) FROM Registration_tbl WHERE email='" + email + "'";
             SqlCommand cmd = new SqlCommand(query, Con);
@@ -115,8 +120,7 @@ namespace HostelManagementSystem
         }
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-                Application.Exit();
-            
+            Application.Exit();            
         }
 
         private void password_TextChanged(object sender, EventArgs e)
